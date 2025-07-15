@@ -1,0 +1,480 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get LTIaaS docs",
+    "description": "Retrieves docs for LTIaas.",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://docs.ltiaas.com/api"
+    }
+  ],
+  "paths": {
+    "/api/ltiaas": {
+      "get": {
+        "summary": "LTIAAS",
+        "description": "Documentation page: LTIAAS",
+        "operationId": "api_ltiaas",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-idtoken": {
+      "get": {
+        "summary": "Get ID Token | LTIAAS",
+        "description": "Documentation page: Get ID Token | LTIAAS",
+        "operationId": "api_get_idtoken",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/post-lineitem-scores": {
+      "get": {
+        "summary": "Submit Scores to Line Item | LTIAAS",
+        "description": "Documentation page: Submit Scores to Line Item | LTIAAS",
+        "operationId": "api_post_lineitem_scores",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-lineitem-scores": {
+      "get": {
+        "summary": "Get Scores from Line Item | LTIAAS",
+        "description": "Documentation page: Get Scores from Line Item | LTIAAS",
+        "operationId": "api_get_lineitem_scores",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-lineitems": {
+      "get": {
+        "summary": "Get Line Items | LTIAAS",
+        "description": "Documentation page: Get Line Items | LTIAAS",
+        "operationId": "api_get_lineitems",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/post-api-deeplinking-form": {
+      "get": {
+        "summary": "Build A Deep-Linking Form | LTIAAS",
+        "description": "Documentation page: Build A Deep-Linking Form | LTIAAS",
+        "operationId": "api_post_api_deeplinking_form",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-memberships": {
+      "get": {
+        "summary": "Get Memberships | LTIAAS",
+        "description": "Documentation page: Get Memberships | LTIAAS",
+        "operationId": "api_get_memberships",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/post-api-lineitems": {
+      "get": {
+        "summary": "Create Line Items | LTIAAS",
+        "description": "Documentation page: Create Line Items | LTIAAS",
+        "operationId": "api_post_api_lineitems",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/post-api-deeplinking-message": {
+      "get": {
+        "summary": "Build Deep-Linking Form Components | LTIAAS",
+        "description": "Documentation page: Build Deep-Linking Form Components | LTIAAS",
+        "operationId": "api_post_api_deeplinking_message",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/delete-api-lineitems-lineitemid": {
+      "get": {
+        "summary": "Delete Line Item by ID | LTIAAS",
+        "description": "Documentation page: Delete Line Item by ID | LTIAAS",
+        "operationId": "api_delete_api_lineitems_lineitemid",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-lineitem": {
+      "get": {
+        "summary": "Get Line Item by ID | LTIAAS",
+        "description": "Documentation page: Get Line Item by ID | LTIAAS",
+        "operationId": "api_get_lineitem",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/post-api-registrations-complete": {
+      "get": {
+        "summary": "Complete Dynamic Registration Process | LTIAAS",
+        "description": "Documentation page: Complete Dynamic Registration Process | LTIAAS",
+        "operationId": "api_post_api_registrations_complete",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-api-registrations": {
+      "get": {
+        "summary": "Get Dynamic Registration by ID | LTIAAS",
+        "description": "Documentation page: Get Dynamic Registration by ID | LTIAAS",
+        "operationId": "api_get_api_registrations",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/put-api-lineitems-lineitemid": {
+      "get": {
+        "summary": "Update Line Item by ID | LTIAAS",
+        "description": "Documentation page: Update Line Item by ID | LTIAAS",
+        "operationId": "api_put_api_lineitems_lineitemid",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-admin-platforms": {
+      "get": {
+        "summary": "Get Platforms | LTIAAS",
+        "description": "Documentation page: Get Platforms | LTIAAS",
+        "operationId": "api_get_admin_platforms",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-admin-platforms-id": {
+      "get": {
+        "summary": "Get Platform by ID | LTIAAS",
+        "description": "Documentation page: Get Platform by ID | LTIAAS",
+        "operationId": "api_get_admin_platforms_id",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/delete-admin-platforms-id": {
+      "get": {
+        "summary": "Delete Platform by ID | LTIAAS",
+        "description": "Documentation page: Delete Platform by ID | LTIAAS",
+        "operationId": "api_delete_admin_platforms_id",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/put-admin-platforms-id": {
+      "get": {
+        "summary": "Update Platform by ID | LTIAAS",
+        "description": "Documentation page: Update Platform by ID | LTIAAS",
+        "operationId": "api_put_admin_platforms_id",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/post-admin-platforms-platform-id-activate": {
+      "get": {
+        "summary": "Activate Platform by ID | LTIAAS",
+        "description": "Documentation page: Activate Platform by ID | LTIAAS",
+        "operationId": "api_post_admin_platforms_platform_id_activate",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/post-admin-platforms": {
+      "get": {
+        "summary": "Register Platform | LTIAAS",
+        "description": "Documentation page: Register Platform | LTIAAS",
+        "operationId": "api_post_admin_platforms",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/post-admin-platforms-platform-id-deactivate": {
+      "get": {
+        "summary": "Deactivate Platform by ID | LTIAAS",
+        "description": "Documentation page: Deactivate Platform by ID | LTIAAS",
+        "operationId": "api_post_admin_platforms_platform_id_deactivate",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}
