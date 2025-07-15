@@ -4,9 +4,9 @@ import * as cheerio from "cheerio";
 import TurndownService from "turndown";
 
 const BASE_URL = "https://docs.ltiaas.com";
-const API_ROOT = "/api";
-const OUTPUT_DIR = "./ltiaas-docs";
-const OPENAPI_FILE = "./ltiaas-openapi.json";
+const API_ROOT = "/guides/api";
+const OUTPUT_DIR = "./ltiaas-guides-docs";
+const OPENAPI_FILE = "./ltiaas-guides-openapi.json";
 
 type OpenAPI = {
   openapi: string;
@@ -55,7 +55,7 @@ async function extractContent(
     "Untitled";
 
   // Find and collect all API links
-  $("a[href^='/api/']").each((_, el) => {
+  $("a[href^='/guides/api/']").each((_, el) => {
     const href = $(el).attr("href");
     if (href) {
       foundUrls.add(BASE_URL + href);
@@ -174,7 +174,7 @@ async function main() {
   console.log("Starting documentation crawl...");
 
   // Start with the initial URL
-  const startUrl = `${BASE_URL}${API_ROOT}/ltiaas`;
+  const startUrl = `${BASE_URL}${API_ROOT}/introduction`;
   foundUrls.add(startUrl);
 
   // Process URLs iteratively until no new ones are found

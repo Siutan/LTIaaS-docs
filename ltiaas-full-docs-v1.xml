@@ -1,0 +1,3290 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: ltiaas-docs/api/**
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+ltiaas-docs/
+  api/
+    delete-admin-platforms-id/
+      index.md
+    delete-api-lineitems-lineitemid/
+      index.md
+    get-admin-platforms/
+      index.md
+    get-admin-platforms-id/
+      index.md
+    get-api-registrations/
+      index.md
+    get-idtoken/
+      index.md
+    get-lineitem/
+      index.md
+    get-lineitem-scores/
+      index.md
+    get-lineitems/
+      index.md
+    get-memberships/
+      index.md
+    ltiaas/
+      index.md
+    post-admin-platforms/
+      index.md
+    post-admin-platforms-platform-id-activate/
+      index.md
+    post-admin-platforms-platform-id-deactivate/
+      index.md
+    post-api-deeplinking-form/
+      index.md
+    post-api-deeplinking-message/
+      index.md
+    post-api-lineitems/
+      index.md
+    post-api-registrations-complete/
+      index.md
+    post-lineitem-scores/
+      index.md
+    put-admin-platforms-id/
+      index.md
+    put-api-lineitems-lineitemid/
+      index.md
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="ltiaas-docs/api/delete-admin-platforms-id/index.md">
+---
+title: Delete Platform by ID | LTIAAS
+url: https://docs.ltiaas.com/api/delete-admin-platforms-id
+source: LTIaaS Documentation
+---
+
+# Delete Platform by ID | LTIAAS
+
+-   [](/)
+-   Platforms
+-   Delete Platform by ID
+
+## Delete Platform by ID[​](#delete-platform-by-id "Direct link to heading")
+
+Get registered platform by ID
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+✅
+
+**Path Parameters**
+
+**platformID** string **required**
+
+The platform ID
+
+**Responses**
+
+-   204
+
+* * *
+
+Returns `204` if the Platform is successfully deleted.
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/delete-api-lineitems-lineitemid/index.md">
+---
+title: Delete Line Item by ID | LTIAAS
+url: https://docs.ltiaas.com/api/delete-api-lineitems-lineitemid
+source: LTIaaS Documentation
+---
+
+# Delete Line Item by ID | LTIAAS
+
+-   [](/)
+-   Line Items
+-   Delete Line Item by ID
+
+## Delete Line Item by ID[​](#delete-line-item-by-id "Direct link to heading")
+
+The LTI® protocol allows you to delete a specific grade line from the LMS grade book through the *Assignment and Grades - Line Items* service. In the context of LTI®, these grade lines are called *line items*. LTIAAS gives you access to this service through the `/api/lineitems` API endpoint.
+
+Please check our [Manipulating grade lines guide](/guides/api/manipulating-grade-lines) and its [Deleting a grade line by its ID section](/guides/api/manipulating-grade-lines#deleting-a-grade-line-by-its-id) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+✅
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+**Path Parameters**
+
+**lineItemID** uri **required**
+
+The URL encoded line item ID.
+
+**Responses**
+
+-   204
+-   401
+
+* * *
+
+No Content
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/get-admin-platforms/index.md">
+---
+title: Get Platforms | LTIAAS
+url: https://docs.ltiaas.com/api/get-admin-platforms
+source: LTIaaS Documentation
+---
+
+# Get Platforms | LTIAAS
+
+-   [](/)
+-   Platforms
+-   Get Platforms
+
+## Get Platforms[​](#get-platforms "Direct link to heading")
+
+Get all registered platforms
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+✅
+
+**Query Parameters**
+
+**id** string
+
+Retrieves a specific Platform by ID.
+
+**url** string
+
+Filters platforms by URL (i.e. iss)
+
+**clientId** string
+
+Filters platforms by client ID
+
+**Responses**
+
+-   200
+
+* * *
+
+Returns an object with a **platforms** field containing an array of Platforms registrations.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+Example
+
+* * *
+
+**Schema**
+
+**platforms** object\[\] **required**
+
+Array of `Platform` objects
+
+-   Array \[
+
+**url** string **required**
+
+Platform URL
+
+**clientId** string **required**
+
+Platform client ID
+
+**name** string **required**
+
+Platform name
+
+**authenticationEndpoint** string **required**
+
+Platform authentication endpoint
+
+**authConfig** object **required**
+
+Platform token authentication configuration object
+
+**key** string **required**
+
+Platform token authentication key
+
+**method** **required**
+
+**Possible values:** \[`JWK_SET`, `JWK_KEY`, `RSA_KEY`\]
+
+Platform token authentication method. **MUST be one of JWK\_SET, JWK\_KEY or RSA\_KEY**
+
+**accesstokenEndpoint** string **required**
+
+Platform access token endpoint
+
+**id** string **required**
+
+Platform ID
+
+**publicKey** string **required**
+
+Platform public key
+
+**active** boolean **required**
+
+When true, the registration is active and allowed to launch
+
+-   \]
+
+```
+{  
+  "platforms": [    {      "url": "string",      "clientId": "string",      "name": "string",      "authenticationEndpoint": "string",      "authConfig": {        "key": "string"      },      "accesstokenEndpoint": "string",      "id": "string",      "publicKey": "string",      "active": true    }  ]}
+```
+
+```
+{  
+  "platforms": [    {      "url": "https://platform.org",      "clientId": "10000000000001",      "name": "Platform 1",      "authenticationEndpoint": "https://platform.org/lti/authorize",      "authConfig": {        "key": "https://platform.org/lti/security/jwks",        "method": "JWK_SET"      },      "accesstokenEndpoint": "https://platform.org/login/oauth2/token",      "id": "f33d6c450b7632c1ff87586c4f150eee",      "publicKey": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAymGcob5nh7kKHWCNQ3J6\n4dX5fknKrwCifFtt32ov09IUHWj2WwTSnZOvi43a3IpJ+zCj9dUnW9NF+Axx+s/X\nNUIcJWLAZtf3QkDAChJZeEEsxptFm9bFfKZjXlq1e5XFFetZBgUN0d+KDJYZP8BV\nQ1bAIwRcrwDDqVXdmYJlwfejstSm8oPkW7NJv6HBsqcloJVlwIfl5ltZfAUiKgIP\nuecHkD16ma712VxSDhZALhhtgGNRbur64nfkEWenYjCyECWMEFJBBw+ef2FAR5g/\nWtvzvkHZmoG79p/9eBw1wM09edT/GnXMXrv9CLWaTz7aTrn0GCBSK/K1unBaF8Q4\nbzRDDrbETKSLc9TPbD7xw+RIMOjLnJXUSz/2FfqmJggzzBOnISwQsuFPIK8IaCdS\nM+CHpHuUHMY8cPNgn63HiWEuy9evrny6gAK40pIgCpTGdsf0EYvOYn/kP7wElCDf\nmogRFJKBRH7BN0Syk+aMmt1t4mPP1QTk3HdfUmdZTU3ueeaIJ18m6Kif88wtij4F\n6PZDrs6h5BCEZUtpl78+H030TSm7OrY9SlOPcD/K+4fZlrkiuFc2hhjb1awTHd2I\nGzWZ8ur3Dr7V/Zgdm6Tio33ot8dEhJcKXbC8V1jhiVtewyDGqFSOBTRuhxNIt0/0\n24z6Wb9bMUH/ztaywZjkIesCAwEAAQ==\n-----END PUBLIC KEY-----\n",      "active": true    },    {      "url": "https://platform.org",      "clientId": "20naAWuw8m4SGVH",      "name": "Platform 2",      "authenticationEndpoint": "https://platform.org/mod/lti/auth.php",      "authConfig": {        "method": "JWK_SET",        "key": "https://platform.org/mod/lti/certs.php"      },      "accesstokenEndpoint": "https://platform.org/mod/lti/token.php",      "id": "3e7853607a37ed57c980f05c03b116ed",      "publicKey": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAymGcob5nh7kKHWCNQ3J6\n4dX5fknKrwCifFtt32ov09IUHWj2WwTSnZOvi43a3IpJ+zCj9dUnW9NF+Axx+s/X\nNUIcJWLAZtf3QkDAChJZeEEsxptFm9bFfKZjXlq1e5XFFetZBgUN0d+KDJYZP8BV\nQ1bAIwRcrwDDqVXdmYJlwfejstSm8oPkW7NJv6HBsqcloJVlwIfl5ltZfAUiKgIP\nuecHkD16ma712VxSDhZALhhtgGNRbur64nfkEWenYjCyECWMEFJBBw+ef2FAR5g/\nWtvzvkHZmoG79p/9eBw1wM09edT/GnXMXrv9CLWaTz7aTrn0GCBSK/K1unBaF8Q4\nbzRDDrbETKSLc9TPbD7xw+RIMOjLnJXUSz/2FfqmJggzzBOnISwQsuFPIK8IaCdS\nM+CHpHuUHMY8cPNgn63HiWEuy9evrny6gAK40pIgCpTGdsf0EYvOYn/kP7wElCDf\nmogRFJKBRH7BN0Syk+aMmt1t4mPP1QTk3HdfUmdZTU3ueeaIJ18m6Kif88wtij4F\n6PZDrs6h5BCEZUtpl78+H030TSm7OrY9SlOPcD/K+4fZlrkiuFc2hhjb1awTHd2I\nGzWZ8ur3Dr7V/Zgdm6Tio33ot8dEhJcKXbC8V1jhiVtewyDGqFSOBTRuhxNIt0/0\n24z6Wb9bMUH/ztaywZjkIesCAwEAAQ==\n-----END PUBLIC KEY-----\n",      "active": true    }  ]}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/get-admin-platforms-id/index.md">
+---
+title: Get Platform by ID | LTIAAS
+url: https://docs.ltiaas.com/api/get-admin-platforms-id
+source: LTIaaS Documentation
+---
+
+# Get Platform by ID | LTIAAS
+
+-   [](/)
+-   Platforms
+-   Get Platform by ID
+
+## Get Platform by ID[​](#get-platform-by-id "Direct link to heading")
+
+Get registered platform by ID
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+✅
+
+**Path Parameters**
+
+**platformID** string **required**
+
+The platform ID
+
+**Responses**
+
+-   200
+
+* * *
+
+Returns an object with a single Platform registration.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+Example
+
+* * *
+
+**Schema**
+
+**url** string **required**
+
+Platform URL
+
+**clientId** string **required**
+
+Platform client ID
+
+**name** string **required**
+
+Platform name
+
+**authenticationEndpoint** string **required**
+
+Platform authentication endpoint
+
+**authConfig** object **required**
+
+Platform token authentication configuration object
+
+**key** string **required**
+
+Platform token authentication key
+
+**method** **required**
+
+**Possible values:** \[`JWK_SET`, `JWK_KEY`, `RSA_KEY`\]
+
+Platform token authentication method. **MUST be one of JWK\_SET, JWK\_KEY or RSA\_KEY**
+
+**accesstokenEndpoint** string **required**
+
+Platform access token endpoint
+
+**id** string **required**
+
+Platform ID
+
+**publicKey** string **required**
+
+Platform public key
+
+**active** boolean **required**
+
+When true, the registration is active and allowed to launch
+
+```
+{  
+  "url": "string",  "clientId": "string",  "name": "string",  "authenticationEndpoint": "string",  "authConfig": {    "key": "string"  },  "accesstokenEndpoint": "string",  "id": "string",  "publicKey": "string",  "active": true}
+```
+
+```
+{  
+  "url": "https://platform.org",  "clientId": "10000000000001",  "name": "Platform 1",  "authenticationEndpoint": "https://platform.org/lti/authorize",  "authConfig": {    "key": "https://platform.org/lti/security/jwks",    "method": "JWK_SET"  },  "accesstokenEndpoint": "https://platform.org/login/oauth2/token",  "id": "f33d6c450b7632c1ff87586c4f150eee",  "publicKey": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAymGcob5nh7kKHWCNQ3J6\n4dX5fknKrwCifFtt32ov09IUHWj2WwTSnZOvi43a3IpJ+zCj9dUnW9NF+Axx+s/X\nNUIcJWLAZtf3QkDAChJZeEEsxptFm9bFfKZjXlq1e5XFFetZBgUN0d+KDJYZP8BV\nQ1bAIwRcrwDDqVXdmYJlwfejstSm8oPkW7NJv6HBsqcloJVlwIfl5ltZfAUiKgIP\nuecHkD16ma712VxSDhZALhhtgGNRbur64nfkEWenYjCyECWMEFJBBw+ef2FAR5g/\nWtvzvkHZmoG79p/9eBw1wM09edT/GnXMXrv9CLWaTz7aTrn0GCBSK/K1unBaF8Q4\nbzRDDrbETKSLc9TPbD7xw+RIMOjLnJXUSz/2FfqmJggzzBOnISwQsuFPIK8IaCdS\nM+CHpHuUHMY8cPNgn63HiWEuy9evrny6gAK40pIgCpTGdsf0EYvOYn/kP7wElCDf\nmogRFJKBRH7BN0Syk+aMmt1t4mPP1QTk3HdfUmdZTU3ueeaIJ18m6Kif88wtij4F\n6PZDrs6h5BCEZUtpl78+H030TSm7OrY9SlOPcD/K+4fZlrkiuFc2hhjb1awTHd2I\nGzWZ8ur3Dr7V/Zgdm6Tio33ot8dEhJcKXbC8V1jhiVtewyDGqFSOBTRuhxNIt0/0\n24z6Wb9bMUH/ztaywZjkIesCAwEAAQ==\n-----END PUBLIC KEY-----\n",  "active": true}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/get-api-registrations/index.md">
+---
+title: Get Dynamic Registration by ID | LTIAAS
+url: https://docs.ltiaas.com/api/get-api-registrations
+source: LTIaaS Documentation
+---
+
+# Get Dynamic Registration by ID | LTIAAS
+
+-   [](/)
+-   Dynamic Registration
+-   Get Dynamic Registration by ID
+
+## Get Dynamic Registration by ID[​](#get-dynamic-registration-by-id "Direct link to heading")
+
+Get information about a dynamic registration event.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+✅
+
+**Path Parameters**
+
+**registrationID** string **required**
+
+The ID of the dynamic registration
+
+**Query Parameters**
+
+**raw** string
+
+Get the unfiltered registration with extra, uncommonly used metadata
+
+**Responses**
+
+-   200
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+Moodle Example
+
+* * *
+
+**Schema**
+
+**url** string **required**
+
+**familyCode** string **required**
+
+**version** string **required**
+
+**supportedScopes** string\[\] **required**
+
+**supportedMessages** object\[\] **required**
+
+-   Array \[
+
+**type** string **required**
+
+**placements** string\[\]
+
+-   \]
+
+```
+{  
+  "url": "string",  "familyCode": "string",  "version": "string",  "supportedScopes": [    "string"  ],  "supportedMessages": [    {      "type": "string",      "placements": [        "string"      ]    }  ]}
+```
+
+```
+{  
+  "url": "https://moodle.ltiaas.com",  "familyCode": "moodle",  "version": "4.4.1+ (Build: 20240705)",  "supportedScopes": [    "https://purl.imsglobal.org/spec/lti-bo/scope/basicoutcome",    "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem.readonly",    "https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly",    "https://purl.imsglobal.org/spec/lti-ags/scope/score",    "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem",    "https://purl.imsglobal.org/spec/lti-nrps/scope/contextmembership.readonly",    "https://purl.imsglobal.org/spec/lti-ts/scope/toolsetting",    "openid"  ],  "supportedMessages": [    {      "type": "LtiResourceLinkRequest"    },    {      "type": "LtiDeepLinkingRequest",      "placements": [        "ContentArea"      ]    }  ]}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+Example
+
+* * *
+
+**Schema**
+
+**status** integer
+
+**Default value:** `401`
+
+**error** string
+
+**Default value:** `Unauthorized`
+
+**details** object
+
+**message** string
+
+**Default value:** `INVALID_LTIK_AUTH_AUTHORIZATION_HEADER`
+
+**description** string
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid API key"  }}
+```
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid API key"  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/get-idtoken/index.md">
+---
+title: Get ID Token | LTIAAS
+url: https://docs.ltiaas.com/api/get-idtoken
+source: LTIaaS Documentation
+---
+
+# Get ID Token | LTIAAS
+
+-   [](/)
+-   ID Token
+-   Get ID Token
+
+## Get ID Token[​](#get-id-token "Direct link to heading")
+
+The ID Token is the main piece of data in the LTI® protocol, it's sent by the LMS to the LTI® tool and contains information regarding the current LTI® launch, this includes user information, LMS information, launch context information and everything you need to use the many LTI® services.
+
+LTIAAS gives you access to a launch specific ID Token, formatted for easy of use, through the `/api/idtoken` API endpoint.
+
+Please check our [Retrieving the ID Token guide](/guides/api/idtoken) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+**Query Parameters**
+
+**raw** boolean
+
+If true, returns an unformatted version of the ID token.
+
+**Responses**
+
+-   200
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**user** object **required**
+
+User information
+
+**id** string **required**
+
+User ID as defined in the LMS
+
+**roles** string\[\] **required**
+
+**Possible values:** \[`Administrator`, `Student`, `Learner`, `Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#None`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#AccountAdmin`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#Creator`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#SysAdmin`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#SysSupport`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#User`, `http://purl.imsglobal.org/vocab/lti/system/person#TestUser`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Faculty`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Guest`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#None`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Other`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Staff`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Student`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Alumni`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Learner`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Member`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Mentor`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Observer`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#ProspectiveStudent`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Learner`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Manager`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Member`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Officer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalDeveloper`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSupport`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSystemAdministrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Support`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#SystemAdministrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentDeveloper`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentExpert`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ExternalContentExpert`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#Librarian`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#ExternalInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Grader`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#GuestInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Lecturer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#PrimaryInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#SecondaryInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistant`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantGroup`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantOffering`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantSection`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantSectionAssociation`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantTemplate`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#ExternalLearner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#GuestLearner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Learner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Manager`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAdvisor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAuditor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalLearningFacilitator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalMentor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalReviewer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalTutor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#LearningFacilitator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Mentor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Reviewer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Tutor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Chair`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Communications`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Secretary`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Treasurer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Vice-Chair`\], `>= 1`
+
+The required https://purl.imsglobal.org/spec/lti/claim/roles claim's value contains a (possibly empty) array of URI values for roles that the user has within the message's associated context.
+
+If this list is not empty, it MUST contain at least one role from the role vocabularies described in role vocabularies.
+
+**email** email
+
+End-User's preferred e-mail address. Its value MUST conform to the RFC 5322 addr-spec syntax. The RP MUST NOT rely upon this value being unique. It should be combined with platform.id and launch.context.id to guarantee uniqueness of the user.
+
+**name** string
+
+End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences.
+
+**givenName** string
+
+Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.
+
+**familyName** string
+
+Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.
+
+**platform** object **required**
+
+An object containing information about the LMS.
+
+**id** string **required**
+
+The platform ID as registrered within LTIAAS.
+
+**url** string **required**
+
+The URL of.
+
+**clientId** string **required**
+
+Platform generated Client ID.
+
+**deploymentId** string **required**
+
+Platform generated Deployment ID.
+
+**name** string **required**
+
+Platform name.
+
+**guid** string
+
+A stable locally unique to the iss identifier for an instance of the tool platform. The value of guid is a case-sensitive string that MUST NOT exceed 255 ASCII characters in length. The use of Universally Unique IDentifier (UUID) defined in RFC4122 is recommended.
+
+**productFamilyCode** string
+
+Platform family code.
+
+**version** string
+
+Platform version.
+
+**description** string
+
+Platform description.
+
+**contactEmail** email
+
+Administrative contact email for the platform.
+
+**launch** object
+
+Launch context information.
+
+**type** string **required**
+
+**Possible values:** \[`LtiResourceLinkRequest`\]
+
+contains a string that indicates the type of the sender's LTI® message. For conformance with this specification, the claim must have the value LtiResourceLinkRequest.
+
+**target** uri **required**
+
+The target link URI is the actual endpoint for the LTI® resource to display; for example, the url in Deep Linking ltiResourceLink items, or the launch\_url in IMS Common Cartridges, or any launch URL defined in the tool configuration.
+
+**context** object
+
+The optional [https://purl.imsglobal.org/spec/lti/claim/context](https://purl.imsglobal.org/spec/lti/claim/context) claim composes properties for the context from within which the resource link launch occurs. While this is technically optional, all major LMSes send it.
+
+**id** string **required**
+
+Stable identifier that uniquely identifies the context from which the LTI® message initiates.
+
+**label** string
+
+Short descriptive name for the context. This often carries the "course code" for a course offering or course section context.
+
+**title** string
+
+Full descriptive name for the context. This often carries the "course title" or "course name" for a course offering context.
+
+**type** string\[\] **required**
+
+**Possible values:** \[`http://purl.imsglobal.org/vocab/lis/v2/course#CourseTemplate`, `CourseTemplate`, `urn:lti:context-type:ims/lis/CourseTemplate`, `http://purl.imsglobal.org/vocab/lis/v2/course#CourseOffering`, `CourseOffering`, `urn:lti:context-type:ims/lis/CourseOffering`, `http://purl.imsglobal.org/vocab/lis/v2/course#CourseSection`, `CourseSection`, `urn:lti:context-type:ims/lis/CourseSection`, `http://purl.imsglobal.org/vocab/lis/v2/course#Group`, `Group`, `urn:lti:context-type:ims/lis/Group`\]
+
+An array of URI values for context types. If present, the array MUST include at least one context type from the [context type vocabulary](https://www.imsglobal.org/spec/lti/v1p3#context-type-vocabulary) described in context type vocabulary. If the sender of the message wants to include a context type from another vocabulary namespace, by best practice it should use a fully-qualified URI.
+
+**resourceLink** object **required**
+
+The required [https://purl.imsglobal.org/spec/lti/claim/resource\_link](https://purl.imsglobal.org/spec/lti/claim/resource_link) claim composes properties for the resource link from which the launch message occurs.
+
+**id** string **required**
+
+Opaque identifier for a placement of an LTI® resource link within a context that MUST be a stable and locally unique to the deployment\_id. This value MUST change if the link is copied or exported from one system or context and imported into another system or context. The value of id MUST NOT exceed 255 ASCII characters in length and is case-sensitive.
+
+**title** string
+
+Descriptive title for an LTI® resource link placement.
+
+**description** string
+
+Descriptive phrase for an LTI® resource link placement.
+
+**presentation** object
+
+The optional [https://purl.imsglobal.org/spec/lti/claim/launch\_presentation](https://purl.imsglobal.org/spec/lti/claim/launch_presentation) claim composes properties that describe aspects of how the message sender expects to host the presentation of the message receiver's user experience (for example, the height and width of the viewport the message sender gives over to the message receiver)
+
+**locale** string
+
+Language, country, and variant as represented using the IETF Best Practices for Tags for Identifying Languages.
+
+**document\_target** string
+
+**Possible values:** \[`frame`, `iframe`, `window`\]
+
+The kind of browser window or frame from which the user launched inside the message sender's system. The value for this property MUST be one of: frame, iframe, or window.
+
+**returnUrl** uri
+
+Fully-qualified HTTPS URL within the message sender's user experience to where the message receiver can redirect the user back. The message receiver can redirect to this URL after the user has finished activity, or if the receiver cannot start because of some technical difficulty.
+
+**width** integer
+
+Width of the window or frame where the content from the message receiver will be displayed to the user.
+
+**height** integer
+
+Height of the window or frame where the content from the message receiver will be displayed to the user.
+
+**custom** object **required**
+
+Custom parameters object containing paramaters sent from the LMS.
+
+**services** object **required**
+
+The services section in the LTIAAS ID Token is an object containing information regarding the LTI® services and their availability in the context of a specific LTI® Launch
+
+**deepLinking** object **required**
+
+The deepLinking object contains availability information for the Deep Linking LTI® service
+
+**available** boolean **required**
+
+Availability status for the Deep Linking service in the current launch context
+
+**namesAndRoles** object **required**
+
+The namesAndRoles object contains availability information for the Names and Roles Provisioning LTI® service
+
+**available** boolean **required**
+
+Availability status for the Names and Roles Provisioning service in the current launch context
+
+**assignmentAndGrades** object **required**
+
+The assignmentAndGrades object contains availability information for the Assignment and Grades LTI® service
+
+**available** boolean **required**
+
+Availability status for the Assignment and Grades service in the current launch context
+
+**lineItemId** uri
+
+Line item ID for the current launch context. This field will only be present if there's only one line item ID associated with the current context.
+
+**serviceKey** string
+
+The serviceKey field contains the service key token that can be used to perform the service key based API authentication. This field is only populated if the current launch context has access to at least one of the Assignment and Grades or Names and Roles Provisioning LTI® services
+
+```
+{  
+  "user": {    "id": "2",    "roles": [      "http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor"    ],    "email": "john@lms.com",    "name": "John Doe",    "givenName": "John",    "familyName": "Doe"  },  "platform": {    "id": "0c41aa0849215449d4298e58f7626c68",    "url": "https://lms.example.com",    "clientId": "KzJtrQxEUYGWXjx",    "deploymentId": "1",    "name": "LMS",    "guid": "lms.example.com",    "productFamilyCode": "lms",    "version": "2020073000",    "description": "LMS",    "contactEmail": "contact@lms.com"  },  "launch": {    "type": "LtiResourceLinkRequest",    "target": "https://your.ltiaas.com/lti/launch",    "context": {      "id": "2",      "label": "course",      "title": "Course",      "type": [        "CourseSection"      ]    },    "resourceLink": {      "id": "1",      "title": "Activity",      "description": "Activity 1"    },    "presentation": {      "locale": "en",      "document_target": "iframe",      "returnUrl": "https://lms.example.com/course/1",      "width": 1300,      "height": 964    },    "custom": {}  },  "services": {    "deepLinking": {      "available": true    },    "namesAndRoles": {      "available": true    },    "assignmentAndGrades": {      "available": true,      "lineItemId": "https://lms.example.com/course/1/lineitems/1"    },    "serviceKey": "eyJhbGciajsheu..."  }}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+Example
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/get-lineitem/index.md">
+---
+title: Get Line Item by ID | LTIAAS
+url: https://docs.ltiaas.com/api/get-lineitem
+source: LTIaaS Documentation
+---
+
+# Get Line Item by ID | LTIAAS
+
+-   [](/)
+-   Line Items
+-   Get Line Item by ID
+
+## Get Line Item by ID[​](#get-line-item-by-id "Direct link to heading")
+
+The LTI® protocol allows you to retrieve a specific grade line from the LMS grade book through the *Assignment and Grades - Line Items* service. In the context of LTI®, these grade lines are called *line items*. LTIAAS gives you access to this service through the `/api/lineitems` API endpoint.
+
+Please check our [Manipulating grade lines guide](/guides/api/manipulating-grade-lines) and its [Retrieving a grade line by its ID section](/guides/api/manipulating-grade-lines#retrieving-a-grade-line-by-its-id) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+✅
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+**Path Parameters**
+
+**lineItemID** uri **required**
+
+The URL encoded line item ID.
+
+**Responses**
+
+-   200
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**id** string **required**
+
+URL uniquely identifying the result record.
+
+**label** string **required**
+
+The label is a short string with a human readable text for the line item. It MUST be specified and not blank when posted by the tool. A platform must always include the label.
+
+**scoreMaximum** number **required**
+
+**Possible values:** `> 0`
+
+The maximum score for this line item. Maximum score MUST be a numeric non-null value, strictly greater than 0.
+
+**resourceLinkId** string
+
+A line item MAY be attached to a resource link by including a 'resourceLinkId' in the payload. The resource link MUST exist in the context where the line item is created, and MUST be a link owned by the same tool. If not, the line item creation MUST fail with a response code of Not Found 404.
+
+The platform MAY remove the line items attached to a resource link if the resource link itself is removed.
+
+**resourceId** string
+
+A tool MAY identify to which of its resources the line item is attached to by including a non blank value for resourceId in the payload. This value is a string. For example, resourceId can be 'quiz-231' or any other resource identifier uniquely identifying a resource in a given context.
+
+Multiple line items can share the same resourceId within a given context. resourceId must be preserved when a context is copied if the line items are included in the copy.
+
+If no resourceId is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**tag** string
+
+A tool MAY further qualify a line item by setting a value to tag. The attribute is a string. For example, one assignment resource may have 2 line items, one with tag as 'grade' and the other tagged as 'originality'.
+
+Multiple line items can share the same tag within a given context. tag must be preserved when a context is copied if the line items are included in the copy.
+
+If no tag is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**startDateTime** date-time
+
+A tool MAY specify the initial start time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item can start receiving submissions.
+
+**endDateTime** date-time
+
+A tool MAY specify the initial end time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item stops receiving submissions.
+
+**gradesReleased** boolean
+
+The tool specifies this optional property when it wishes the grades to be released. It is up to the LMS to decide how to handle this and every LMSes behavior may be different.
+
+```
+{  
+  "id": "https://lms.example.com/course/1/lineitems/1",  "label": "Activity",  "scoreMaximum": 95,  "resourceLinkId": "1g3k4dlk49fk",  "resourceId": "quiz-231",  "tag": "grade",  "startDateTime": "2022-03-06T20:05:02Z",  "endDateTime": "2022-04-06T22:05:03Z",  "gradesReleased": true}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/get-lineitem-scores/index.md">
+---
+title: Get Scores from Line Item | LTIAAS
+url: https://docs.ltiaas.com/api/get-lineitem-scores
+source: LTIaaS Documentation
+---
+
+# Get Scores from Line Item | LTIAAS
+
+-   [](/)
+-   Scores
+-   Get Scores from Line Item
+
+## Get Scores from Line Item[​](#get-scores-from-line-item "Direct link to heading")
+
+The LTI® protocol allows you to retrieves scores from the LMS grade book through the *Assignment and Grades - Results* service. LTIAAS gives you access to this service through the `/api/lineitems/:lineItemID/scores` API endpoint.
+
+Please check our [Manipulating grades guide](/guides/api/manipulating-grades) and its [Retrieving grades section](/guides/api/manipulating-grades#retrieving-grades) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+✅
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+**Path Parameters**
+
+**lineItemID** uri **required**
+
+The URL encoded line item ID.
+
+**Query Parameters**
+
+**userId** string
+
+Used to to filter the results to a single user. The results MUST contain at most 1 result. An empty array MAY be returned if the user does not have any result recorded.
+
+**limit** integer
+
+**Possible values:** `>= 1`
+
+Used to to restrict the number of results returned; the platform MAY further reduce the number of results returned at its own discretion.
+
+**url** string
+
+Retrieves scores from a specific URL
+
+**Responses**
+
+-   200
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**scores** object\[\] **required**
+
+The platform must return a result record for each user that has a non empty 'resultScore' for the queried upon line item. The platform MAY skip empty results.
+
+-   Array \[
+
+**id** uri **required**
+
+URL uniquely identifying the result record.
+
+**userId** string **required**
+
+The userId contains the LTI® user ID identifying the recipient of the Result (usually a learner). The userId MUST be present.
+
+**scoreOf** uri **required**
+
+URL identifying the Line Item to which this result belongs. Must be the same as the line item id and the value of the lineitem claim when included in the LTI® message.
+
+**timestamp** date-time **required**
+
+The timestamp MUST be present and indicate when the score was changed; it is intended to be used by the platform as a way to guard against out of order score updates. Score timestamp represents the server time when the Score state was modified.
+
+**resultScore** number
+
+The current score for this user. The value must be a numeric value. If no value exists, this attribute may be omitted, or have an explicit null value.
+
+**resultMaximum** number
+
+**Possible values:** `> 0`
+
+The 'resultMaximum' value MUST be a positive number (with 0 considered a negative number); if no value is specified, then a default maximum value of 1 must be used.
+
+**comment** string
+
+The current value for the comment. The value must be a string. If no value exists, this attribute may be omitted, blank or have an explicit null value.
+
+-   \]
+
+**next** uri
+
+A URL pointing to the next page of line items.
+
+**prev** uri
+
+A URL pointing to the previous page of line items.
+
+**first** uri
+
+A URL pointing to the first page of line items.
+
+**last** uri
+
+A URL pointing to the last page of line items.
+
+```
+{  
+  "scores": [    {      "id": "https://lms.example.com/course/1/lineitems/1/scores/2",      "userId": "2",      "scoreOf": "https://lms.example.com/course/1/lineitems/1",      "timestamp": "2020-06-02T10:51:08-03:00",      "resultScore": 95,      "resultMaximum": 100,      "comment": "string"    }  ],  "next": "https://lms.example.com/course/1/lineitems/1/scores?page=3",  "prev": "https://lms.example.com/course/1/lineitems/1/scores?page=1",  "first": "https://lms.example.com/course/1/lineitems/1/scores?page=1",  "last": "https://lms.example.com/course/1/lineitems/1/scores?page=3"}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/get-lineitems/index.md">
+---
+title: Get Line Items | LTIAAS
+url: https://docs.ltiaas.com/api/get-lineitems
+source: LTIaaS Documentation
+---
+
+# Get Line Items | LTIAAS
+
+-   [](/)
+-   Line Items
+-   Get Line Items
+
+## Get Line Items[​](#get-line-items "Direct link to heading")
+
+The LTI® protocol allows you to retrieve grade lines from the LMS grade book through the *Assignment and Grades - Line Items* service. In the context of LTI®, these grade lines are called *line items*. LTIAAS gives you access to this service through the `/api/lineitems` API endpoint.
+
+Please check our [Manipulating grade lines guide](/guides/api/manipulating-grade-lines) and its [Retrieving grade lines section](/guides/api/manipulating-grade-lines#retrieving-grade-lines-for-an-lti-context) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+✅
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+**Query Parameters**
+
+**resourceLinkId** string
+
+Filters line items by the resource link ID attached to the current launch context
+
+**resourceId** string
+
+Filters line items by resourceId
+
+**tag** string
+
+Filters line items by tag
+
+**limit** integer
+
+**Possible values:** `>= 1`
+
+Limits the number of line items returned. the platform MAY further reduce the number of items returned at its own discretion.
+
+**url** uri
+
+Retrieves line items from a specific URL. - *When present, the `url` parameter causes every other parameter to be ignored.* - The `url` parameter should be URL encoded. - In cases where not all line items are retrieved when the line item limit is reached, the returned object will contain a `next` field holding an URL that can be used to retrieve the remaining line items through the `url` parameter.
+
+**Responses**
+
+-   200
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**lineItems** object\[\] **required**
+
+An array of line items.
+
+-   Array \[
+
+**id** string **required**
+
+URL uniquely identifying the result record.
+
+**label** string **required**
+
+The label is a short string with a human readable text for the line item. It MUST be specified and not blank when posted by the tool. A platform must always include the label.
+
+**scoreMaximum** number **required**
+
+**Possible values:** `> 0`
+
+The maximum score for this line item. Maximum score MUST be a numeric non-null value, strictly greater than 0.
+
+**resourceLinkId** string
+
+A line item MAY be attached to a resource link by including a 'resourceLinkId' in the payload. The resource link MUST exist in the context where the line item is created, and MUST be a link owned by the same tool. If not, the line item creation MUST fail with a response code of Not Found 404.
+
+The platform MAY remove the line items attached to a resource link if the resource link itself is removed.
+
+**resourceId** string
+
+A tool MAY identify to which of its resources the line item is attached to by including a non blank value for resourceId in the payload. This value is a string. For example, resourceId can be 'quiz-231' or any other resource identifier uniquely identifying a resource in a given context.
+
+Multiple line items can share the same resourceId within a given context. resourceId must be preserved when a context is copied if the line items are included in the copy.
+
+If no resourceId is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**tag** string
+
+A tool MAY further qualify a line item by setting a value to tag. The attribute is a string. For example, one assignment resource may have 2 line items, one with tag as 'grade' and the other tagged as 'originality'.
+
+Multiple line items can share the same tag within a given context. tag must be preserved when a context is copied if the line items are included in the copy.
+
+If no tag is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**startDateTime** date-time
+
+A tool MAY specify the initial start time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item can start receiving submission.
+
+**endDateTime** date-time
+
+A tool MAY specify the initial end time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item stops receiving submissions.
+
+**gradesReleased** boolean
+
+The tool specifies this optional property when it wishes the grades to be released. It is up to the LMS to decide how to handle this and every LMSes behavior may be different.
+
+-   \]
+
+**next** uri
+
+A URL pointing to the next page of line items.
+
+**first** uri
+
+A URL pointing to the first page of line items.
+
+**last** uri
+
+A URL pointing to the last page of line items.
+
+**prev** uri
+
+A URL pointing to the previous page of line items.
+
+```
+{  
+  "lineItems": [    {      "id": "https://lms.example.com/course/1/lineitems/1",      "label": "Activity",      "scoreMaximum": 100,      "resourceLinkId": "1g3k4dlk49fk",      "resourceId": "a-9334df-33",      "tag": "grade",      "startDateTime": "2025-01-09T04:06:33.928Z",      "endDateTime": "2018-04-06T22:05:03Z",      "gradesReleased": true    }  ],  "next": "https://lms.example.com/course/1/lineitems?pages=2",  "first": "https://lms.example.com/course/1/lineitems?pages=1",  "last": "https://lms.example.com/course/1/lineitems?pages=3",  "prev": "string"}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/get-memberships/index.md">
+---
+title: Get Memberships | LTIAAS
+url: https://docs.ltiaas.com/api/get-memberships
+source: LTIaaS Documentation
+---
+
+# Get Memberships | LTIAAS
+
+-   [](/)
+-   Memberships
+-   Get Memberships
+
+## Get Memberships[​](#get-memberships "Direct link to heading")
+
+The LTI® protocol allows you to retrieve roster information for an LMS context through the *Names and Roles Provisioning* service. Users that are part of an LMS context are called *members*. LTIAAS gives you access to this service through the `/api/memberships` API endpoint.
+
+Please check our [Retrieving course roster guide](/guides/api/roster) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+✅
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+**Query Parameters**
+
+**role** string
+
+**Possible values:** \[`Administrator`, `Student`, `Learner`, `Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#None`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#AccountAdmin`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#Creator`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#SysAdmin`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#SysSupport`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#User`, `http://purl.imsglobal.org/vocab/lti/system/person#TestUser`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Faculty`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Guest`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#None`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Other`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Staff`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Student`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Alumni`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Learner`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Member`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Mentor`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Observer`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#ProspectiveStudent`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Learner`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Manager`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Member`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Officer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalDeveloper`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSupport`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSystemAdministrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Support`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#SystemAdministrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentDeveloper`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentExpert`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ExternalContentExpert`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#Librarian`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#ExternalInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Grader`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#GuestInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Lecturer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#PrimaryInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#SecondaryInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistant`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantGroup`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantOffering`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantSection`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantSectionAssociation`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantTemplate`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#ExternalLearner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#GuestLearner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Learner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Manager`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAdvisor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAuditor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalLearningFacilitator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalMentor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalReviewer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalTutor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#LearningFacilitator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Mentor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Reviewer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Tutor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Chair`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Communications`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Secretary`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Treasurer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Vice-Chair`\]
+
+Filters memberships by role. Possible role values are defined in the [IMS Role Vocabularies](https://www.imsglobal.org/spec/lti/v1p3/#role-vocabularies). For example, a query parameter of 'role=http%3A%2%2Fpurl.imsglobal.org%2Fvocab%2Flis%2Fv2%2Fmembership%23Learner' will filter the memberships to just those which have a Learner role. Since this is a context-level role, the parameter could be simplified to 'role=Learner', following the same rule which applies to the 'roles' parameter in a 'LtiResourceLinkRequest' message.
+
+**limit** int32
+
+**Possible values:** `>= 1`
+
+Limits the number of memberships returned.
+
+**resourceLinkId** string
+
+Retrieves the Resource Link level memberships as specified in the [IMS Resource Link Membership Service specification](https://www.imsglobal.org/spec/lti-nrps/v2p0#resource-link-membership-service).
+
+**url** uri
+
+Retrieves memberships from a specific URL. - *When present, the `url` parameter causes every other parameter to be ignored.* - The `url` parameter should be URL encoded. - In cases where not all members are retrieved when the membership limit is reached, the returned object will contain a `next` field holding an URL that can be used to retrieve the remaining members through the `url` parameter.
+
+**Responses**
+
+-   200
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**id** uri **required**
+
+URL the memberships were retrieved from.
+
+**context** object **required**
+
+Context the memberships were retrieved from.
+
+**id** string **required**
+
+Stable identifier that uniquely identifies the context from which the LTI® message initiates.
+
+**label** string
+
+Short descriptive name for the context. This often carries the "course code" for a course offering or course section context.
+
+**title** string
+
+Full descriptive name for the context. This often carries the "course title" or "course name" for a course offering context.
+
+**members** object\[\] **required**
+
+Array of User memberships as defined in the [LTI® Advantage Names and Roles Provisioning Services](https://www.imsglobal.org/spec/lti-nrps/v2p0)
+
+-   Array \[
+
+**userId** string **required**
+
+User ID as defined in the LMS.
+
+**roles** uri\[\] **required**
+
+**Possible values:** \[`Administrator`, `Student`, `Learner`, `Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#None`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#AccountAdmin`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#Creator`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#SysAdmin`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#SysSupport`, `http://purl.imsglobal.org/vocab/lis/v2/system/person#User`, `http://purl.imsglobal.org/vocab/lti/system/person#TestUser`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Faculty`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Guest`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#None`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Other`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Staff`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Student`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Alumni`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Learner`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Member`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Mentor`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#Observer`, `http://purl.imsglobal.org/vocab/lis/v2/institution/person#ProspectiveStudent`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Learner`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Manager`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Member`, `http://purl.imsglobal.org/vocab/lis/v2/membership#Officer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Administrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Developer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalDeveloper`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSupport`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#ExternalSystemAdministrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#Support`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Administrator#SystemAdministrator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentDeveloper`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ContentExpert`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#ExternalContentExpert`, `http://purl.imsglobal.org/vocab/lis/v2/membership/ContentDeveloper#Librarian`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#ExternalInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Grader`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#GuestInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#Lecturer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#PrimaryInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#SecondaryInstructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistant`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantGroup`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantOffering`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantSection`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantSectionAssociation`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistantTemplate`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#ExternalLearner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#GuestLearner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Instructor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#Learner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#NonCreditLearner`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#AreaManager`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#CourseCoordinator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#ExternalObserver`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Manager`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Manager#Observer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Member#Member`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Advisor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Auditor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAdvisor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalAuditor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalLearningFacilitator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalMentor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalReviewer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#ExternalTutor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#LearningFacilitator`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Mentor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Reviewer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Mentor#Tutor`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Chair`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Communications`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Secretary`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Treasurer`, `http://purl.imsglobal.org/vocab/lis/v2/membership/Officer#Vice-Chair`\]
+
+The required https://purl.imsglobal.org/spec/lti/claim/roles claim's value contains a (possibly empty) array of URI values for roles that the user has within the message's associated context.\\n\\nIf this list is not empty, it MUST contain at least one role from the role vocabularies described in role vocabularies.
+
+**status** string **required**
+
+**Possible values:** \[`Active`, `Inactive`, `Deleted`\]
+
+Each membership has a status of either Active or Inactive. If the status is not specified then a status of Active must be assumed.
+
+**email** email
+
+End-User's preferred e-mail address. Its value MUST conform to the RFC 5322 addr-spec syntax. The RP MUST NOT rely upon this value being unique.
+
+**name** string
+
+End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences.
+
+**givenName** string
+
+Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.
+
+**familyName** string
+
+Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.
+
+**picture** uri
+
+A URL to the user's picture.
+
+-   \]
+
+**next** uri
+
+URL of the next membership page. This field is only present if the membership limit was reached before the full members list was retrieved.
+
+```
+{  
+  "id": "https://lms.example.com/course/1/memberships?page=1",  "context": {    "id": "1",    "label": "course",    "title": "Course"  },  "members": [    {      "userId": "2",      "roles": [        "http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor"      ],      "status": "Active",      "email": "john@lms.example.com",      "name": "John Doe",      "givenName": "John",      "familyName": "Doe",      "picture": "https://lms.example.com/john.jpg"    }  ],  "next": "https://lms.example.com/course/1/memberships?page=2"}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/ltiaas/index.md">
+---
+title: LTIAAS
+url: https://docs.ltiaas.com/api/ltiaas
+source: LTIaaS Documentation
+---
+
+# LTIAAS
+
+-   [](/)
+-   Introduction
+
+On this page
+
+Version: 2.0
+
+# LTIAAS
+
+The **LTIAAS** API allows you to easily access the various LTI® 1.3 Advantage services and functionalities like SSO, grade manipulation and roster retrieval.
+
+## Using the LTIAAS API[​](#using-the-ltiaas-api "Direct link to heading")
+
+To learn how to use our API to build your very own LTI® integration, please check our detailed guides.
+
+### Retrieve the ID Token and perform SSO[​](#retrieve-the-id-token-and-perform-sso "Direct link to heading")
+
+The ID Token is the main piece of data in the LTI® protocol, it's sent by the LMS to the LTI® tool and contains information regarding the current LTI® launch, this includes user information, LMS information, launch context information and everything you need to use the many LTI® services.
+
+You can use the information contained in the ID Token to perform SSO and authenticate users into your application, automatically logging them into a preexisting account or provisioning a new one on the spot. To learn more about this, please check our [Retrieving ID Token guide](/guides/api/idtoken) and its [Performing SSO section](/guides/api/idtoken#performing-sso).
+
+### Retrieve roster information[​](#retrieve-roster-information "Direct link to heading")
+
+The LTI® protocol allows you to retrieve roster information for an LMS context through the *Names and Roles Provisioning* service. LTIAAS gives you access to this service through the Memberships API endpoint. To learn more about this functionality, please check our [Retrieving course roster guide](/guides/api/roster).
+
+### Manipulate user grades[​](#manipulate-user-grades "Direct link to heading")
+
+The LTI® protocol allows you to manipulate user's grades and LMS grade lines through the *Assignment and Grades* service. LTIAAS gives you access to this service through the Line Items API endpoint. To learn more about this functionality, please check our [Manipulating grade lines guide](/guides/api/manipulating-grade-lines) and [Manipulating grades guide](/guides/api/manipulating-grades).
+
+### Serve multiple resources through your LTI® tool[​](#serve-multiple-resources-through-your-lti-tool "Direct link to heading")
+
+If your application is a hub of multiple resources and/or activities, the LTI® protocol makes this easy to manage through the *Deep Linking* service. You can use this service to allow teachers and administrators to select one specific resource from your application when creating an activity in the LMS. LTIAAS gives you access to this service through the Deep Linking flow and API endpoint. To learn more about this functionality, please check our [Performing Deep Linking guide](/guides/api/deeplinking).
+
+## Authenticating API requests[​](#authenticating-api-requests "Direct link to heading")
+
+Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+## Authentication[​](#authentication "Direct link to heading")
+
+API Key: LTIK-AUTH-V2
+
+API Key: SERVICE-AUTH-V1
+
+* * *
+
+An http Header who's value is of the format: `LTIK-AUTH-V2 <API_KEY>:<ltik>`. Where <API\_KEY\> should be replaced with your static API Key provided by LTIAAS and <ltik\> is the ltik value passed to you on each new launch of your tool. Learn more about this in the [Authenticating API requests](/guides/api/authentication) guide.
+
+Security Scheme Type:
+
+apiKey
+
+Header parameter name:
+
+Authorization
+
+An http Header who's value is of the format: `SERVICE-AUTH-V1 <API_KEY>:<SERVICE_KEY>`. Where <API\_KEY\> should be replaced with your static API Key provided by LTIAAS and <SERVICE\_KEY\> is the service key value obtained from an idtoken. Learn more about this in the [Authenticating API requests](/guides/api/authentication) guide.
+
+Security Scheme Type:
+
+apiKey
+
+Header parameter name:
+
+Authorization
+
+### Contact
+
+LTIAAS Support: [support@ltiaas.com](mailto:support@ltiaas.com)URL: [https://ltiaas.com](https://ltiaas.com)
+
+### Terms of Service
+
+[https://ltiaas.com/terms](https://ltiaas.com/terms)
+
+### License
+
+[BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
+</file>
+
+<file path="ltiaas-docs/api/post-admin-platforms/index.md">
+---
+title: Register Platform | LTIAAS
+url: https://docs.ltiaas.com/api/post-admin-platforms
+source: LTIaaS Documentation
+---
+
+# Register Platform | LTIAAS
+
+-   [](/)
+-   Platforms
+-   Register Platform
+
+## Register Platform[​](#register-platform "Direct link to heading")
+
+Register a new platform
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+✅
+
+application/json
+
+**Request Body**
+
+**url** string **required**
+
+Platform URL (i.e. iss)
+
+**clientId** string **required**
+
+Platform client ID
+
+**name** string **required**
+
+Platform name
+
+**authenticationEndpoint** string **required**
+
+Platform authentication endpoint
+
+**accesstokenEndpoint** string **required**
+
+Platform access token endpoint
+
+**authConfig** object **required**
+
+Platform token authentication configuration object
+
+**key** string **required**
+
+Platform token authentication key
+
+**method** **required**
+
+**Possible values:** \[`JWK_SET`, `JWK_KEY`, `RSA_KEY`\]
+
+Platform token authentication method. **MUST be one of JWK\_SET, JWK\_KEY or RSA\_KEY**.
+
+**Responses**
+
+-   200
+
+* * *
+
+Returns the newly created Platform.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+Example
+
+* * *
+
+**Schema**
+
+**url** string **required**
+
+Platform URL
+
+**clientId** string **required**
+
+Platform client ID
+
+**name** string **required**
+
+Platform name
+
+**authenticationEndpoint** string **required**
+
+Platform authentication endpoint
+
+**authConfig** object **required**
+
+Platform access token endpoint
+
+**key** string **required**
+
+Platform token authentication key
+
+**method** **required**
+
+**Possible values:** \[`JWK_SET`, `JWK_KEY`, `RSA_KEY`\]
+
+Platform token authentication method. **MUST be one of JWK\_SET, JWK\_KEY or RSA\_KEY**
+
+**accesstokenEndpoint** string **required**
+
+Platform access token endpoint
+
+**id** string **required**
+
+Platform ID
+
+**publicKey** string **required**
+
+Platform Public Key
+
+**active** boolean **required**
+
+true if the registration is active and allowed to launch
+
+```
+{  
+  "url": "string",  "clientId": "string",  "name": "string",  "authenticationEndpoint": "string",  "authConfig": {    "key": "string"  },  "accesstokenEndpoint": "string",  "id": "string",  "publicKey": "string",  "active": true}
+```
+
+```
+{  
+  "url": "https://platform.org",  "clientId": "10000000000001",  "name": "Platform 1",  "authenticationEndpoint": "https://platform.org/lti/authorize",  "authConfig": {    "key": "https://platform.org/lti/security/jwks",    "method": "JWK_SET"  },  "accesstokenEndpoint": "https://platform.org/login/oauth2/token",  "id": "f33d6c450b7632c1ff87586c4f150eee",  "publicKey": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAymGcob5nh7kKHWCNQ3J6\n4dX5fknKrwCifFtt32ov09IUHWj2WwTSnZOvi43a3IpJ+zCj9dUnW9NF+Axx+s/X\nNUIcJWLAZtf3QkDAChJZeEEsxptFm9bFfKZjXlq1e5XFFetZBgUN0d+KDJYZP8BV\nQ1bAIwRcrwDDqVXdmYJlwfejstSm8oPkW7NJv6HBsqcloJVlwIfl5ltZfAUiKgIP\nuecHkD16ma712VxSDhZALhhtgGNRbur64nfkEWenYjCyECWMEFJBBw+ef2FAR5g/\nWtvzvkHZmoG79p/9eBw1wM09edT/GnXMXrv9CLWaTz7aTrn0GCBSK/K1unBaF8Q4\nbzRDDrbETKSLc9TPbD7xw+RIMOjLnJXUSz/2FfqmJggzzBOnISwQsuFPIK8IaCdS\nM+CHpHuUHMY8cPNgn63HiWEuy9evrny6gAK40pIgCpTGdsf0EYvOYn/kP7wElCDf\nmogRFJKBRH7BN0Syk+aMmt1t4mPP1QTk3HdfUmdZTU3ueeaIJ18m6Kif88wtij4F\n6PZDrs6h5BCEZUtpl78+H030TSm7OrY9SlOPcD/K+4fZlrkiuFc2hhjb1awTHd2I\nGzWZ8ur3Dr7V/Zgdm6Tio33ot8dEhJcKXbC8V1jhiVtewyDGqFSOBTRuhxNIt0/0\n24z6Wb9bMUH/ztaywZjkIesCAwEAAQ==\n-----END PUBLIC KEY-----\n",  "active": true}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/post-admin-platforms-platform-id-activate/index.md">
+---
+title: Activate Platform by ID | LTIAAS
+url: https://docs.ltiaas.com/api/post-admin-platforms-platform-id-activate
+source: LTIaaS Documentation
+---
+
+# Activate Platform by ID | LTIAAS
+
+-   [](/)
+-   Platforms
+-   Activate Platform by ID
+
+## Activate Platform by ID[​](#activate-platform-by-id "Direct link to heading")
+
+Dynamically registered Platforms have to be activated if the the `Auto Activate Dynamically Registered Platforms` option was turned off during the LTIAAS onboarding process.
+
+Any platform can be activated using this API.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+✅
+
+**Path Parameters**
+
+**platformID** string **required**
+
+The platform ID
+
+**Responses**
+
+-   200
+
+* * *
+
+Returns `200` if the Platform is successfully activated.
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/post-admin-platforms-platform-id-deactivate/index.md">
+---
+title: Deactivate Platform by ID | LTIAAS
+url: https://docs.ltiaas.com/api/post-admin-platforms-platform-id-deactivate
+source: LTIaaS Documentation
+---
+
+# Deactivate Platform by ID | LTIAAS
+
+-   [](/)
+-   Platforms
+-   Deactivate Platform by ID
+
+## Deactivate Platform by ID[​](#deactivate-platform-by-id "Direct link to heading")
+
+Dynamically registered Platforms will be be activated if the the `Auto Activate Dynamically Registered Platforms` option was turned on during the LTIAAS onboarding process.
+
+Any platform can be deactivated using this API.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+✅
+
+**Path Parameters**
+
+**platformID** string **required**
+
+The platform ID
+
+**Responses**
+
+-   200
+
+* * *
+
+Returns `200` if the Platform is successfully deactivated.
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/post-api-deeplinking-form/index.md">
+---
+title: Build A Deep-Linking Form | LTIAAS
+url: https://docs.ltiaas.com/api/post-api-deeplinking-form
+source: LTIaaS Documentation
+---
+
+# Build A Deep-Linking Form | LTIAAS
+
+-   [](/)
+-   Deep Linking
+-   Build A Deep-Linking Form
+
+## Build A Deep-Linking Form[​](#build-a-deep-linking-form "Direct link to heading")
+
+If your application is a hub of multiple resources and/or activities, the LTI® protocol makes this easy to manage through the *Deep Linking* service. You can use this service to allow teachers and administrators to select one specific resource from your application when creating a resource link (activity) in the LMS. LTIAAS gives you access to this service through the Deep Linking flow and `/api/deeplinking/form` API endpoint.
+
+Please check our [Performing Deep Linking guide](/guides/api/deeplinking) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+application/json
+
+**Request Body**
+
+**contentItems** object\[\] **required**
+
+An array of content items as defined in the LTI® 1.3 specification: [https://www.imsglobal.org/spec/lti-dl/v2p0/#content-item-types](https://www.imsglobal.org/spec/lti-dl/v2p0/#content-item-types)
+
+-   Array \[
+
+**type** string **required**
+
+**Possible values:** \[`link`, `ltiResourceLink`, `file`, `html`, `image`\]
+
+The type of the content item
+
+**url** string
+
+A URL pointing to your LTIAAS instance. In order to pass parameters to your Tool and identify the selected resource you can add query parameters to the URL.
+
+> Example:
+> 
+> -   URL passed inside the Deep Linking content item: `https://your.ltiaas.com?resource=1234`
+> -   URL the user will be redirected to after a successful launch from the created resource: `https://yourtool.com?resource=1234`
+
+**title** string
+
+plain text to use as the title or heading for content.
+
+**text** string
+
+plain text description of the content item intended to be displayed to all users who can access the item.
+
+**icon** object
+
+Fully qualified URL, height, and width of an icon image to be placed with the file. A platform may not support the display of icons, but where it does, it may choose to use a local copy of the icon rather than linking to the URL provided (which would also allow it to resize the image to suit its needs).
+
+**url** uri
+
+fully qualified URL to the image file.
+
+**width** integer
+
+integer representing the width in pixels of the image.
+
+**height** integer
+
+integer representing the height in pixels of the image.
+
+**thumbnail** object
+
+Fully qualified URL, height, and width of a thumbnail image to be made a hyperlink. This allows the hyperlink to be opened within the platform from text or an image, or from both.
+
+**url** uri
+
+fully qualified URL to the image file.
+
+**width** integer
+
+integer representing the width in pixels of the image.
+
+**height** integer
+
+integer representing the height in pixels of the image.
+
+**embed** object
+
+The embed property has a single required property html that contains the HTML fragment to embed the resource directly inside HTML. It is commonly used as a way to embed a resource in an HTML editor. Platform must make sure to properly sanitize the HTML prior to inclusion.
+
+**html** string
+
+the HTML fragment to embed the resource directly inside HTML.
+
+**window** object
+
+The window property indicates how to open the resource in a new window/tab.
+
+**targetName** string
+
+String identifying the name of the window to open; this allows for a single window to be shared as the target of multiple links, preventing a proliferation of new windows/tabs.
+
+**width** integer
+
+integer representing the width in pixels of the new window.
+
+**height** integer
+
+integer representing the height in pixels of the new window.
+
+**windowFeatures** string
+
+Comma-separated list of window features as per the [window.open() definition](https://developer.mozilla.org/en-US/docs/Web/API/Window/open).
+
+**iframe** object
+
+The iframe property indicates the resource can be embedded using an iframe. The child parameters ndicates the dimension and the src URL for embedding
+
+**src** string
+
+required parameter indicating the URL to use as the src of the iframe. The src value may differ from the link url.
+
+**width** integer
+
+integer representing the width in pixel of the new iframe.
+
+**height** integer
+
+integer representing the height in pixel of the new iframe.
+
+**custom** object
+
+```
+A map of key/value custom parameters. Those parameters MUST be included in the LtiResourceLinkRequest payload. Value may include substitution parameters as defined in the LTI® Core Specification [LTI®-13](https://www.imsglobal.org/spec/lti/v1p3/). Map values must be strings. Note that "empty-string" is a valid value (""); however, null is not a valid value.
+```
+
+**lineItem** object
+
+A lineItem object that indicates this activity is expected to receive scores; the platform may automatically create a corresponding line item when the resource link is created, using the maximum score as the default maximum points. The resource\_id, tag and scoreMaximum are defined in the [LTI®-AGS-20](https://www.imsglobal.org/spec/lti-ags/v2p0/). A line item created as a result of a Deep Linking interaction must be exposed in a subsequent line item service call, with the resourceLinkId of the associated resource link, as well as the resourceId and tag if present in the line item definition.
+
+**label** string
+
+label for the line item. If not present, the title of the content item must be used.
+
+**scoreMaximum** number
+
+Positive decimal value indicating the maximum score possible for this activity.
+
+**resourceId** string
+
+Tool provided ID for the resource.
+
+**tag** string
+
+Additional information about the line item; may be used by the tool to identify line items attached to the same resource or resource link (example: grade, originality, participation).
+
+**gradesReleased** boolean
+
+boolean to indicate if the platform should release the grades, e.g., to learners.
+
+**available** object
+
+Indicates the initial start and end time this activity should be made available to learners. A platform may choose to make an item not accessible by hiding it, or by disabling the link, or some other method which prevents the link from being opened by a learner. The initial value may subsequently be changed within the platform and the tool may use the ResourceLink.available.startDateTime and ResourceLink.available.endDateTime substitution parameters defined in LTI® Core specification [LTI®-13](https://www.imsglobal.org/spec/lti/v1p3/) within custom parameters to get the actual values at launch time. Note there may be many factors controlling the availability of an item by the platform, and tools are not guaranteed to receive available start and end times in a launch, even if they set them when creating content.
+
+**startDateTime** date-time
+
+ISO 8601 date and time when the link becomes accessible [ISO8601](http://www.iso.org/iso/catalogue_detail?csnumber=40874).
+
+**endDateTime** date-time
+
+ISO 8601 date and time when the link stops being accessible [ISO8601](https://www.imsglobal.org/spec/lti-dl/v2p0/#bib-iso8601).
+
+**submission** object
+
+Indicates the initial start and end time submissions for this activity can be made by learners. The initial value may subsequently be changed within the platform and the tool may use the ResourceLink.submission.startDateTime and ResourceLink.submission.endDateTime substitution parameters defined in LTI® Core specification [LTI®-13](https://www.imsglobal.org/spec/lti/v1p3/) within custom parameters to get the actual values at launch time.
+
+**startDateTime** date-time
+
+ISO 8601 Date and time when the link can start receiving submissions [http://www.iso.org/iso/catalogue\_detail?csnumber=40874](http://www.iso.org/iso/catalogue_detail?csnumber=40874).
+
+**endDateTime** date-time
+
+ISO 8601 Date and time when the link stops accepting submissions [http://www.iso.org/iso/catalogue\_detail?csnumber=40874](http://www.iso.org/iso/catalogue_detail?csnumber=40874).
+
+**expiresAt** date-time
+
+```
+ISO 8601 Date and time [http://www.iso.org/iso/catalogue_detail?csnumber=40874](http://www.iso.org/iso/catalogue_detail?csnumber=40874). The URL will be available until this time. No guarantees after that. (e.g. 2014-03-05T12:34:56Z).
+```
+
+**html** string
+
+When type=="html". HTML fragment to be embedded. The platform is expected to sanitize it against cross-site scripting attacks.
+
+**width** integer
+
+Integer representing the width in pixels of the image.
+
+**height** integer
+
+Integer representing the height in pixels of the image.
+
+-   \]
+
+**options** object
+
+An object containing one or more optioal fields to aid in error conditions
+
+**message** string
+
+Message displayed to the user if the deep linking process is successfully completed.
+
+**log** string
+
+Log generated by the Platform if the deep linking process is successfully completed.
+
+**errMessage** string
+
+Message displayed to the user if the deep linking process finishes with an error. Sending this will cause the LMS to reject the deep linking submission and display the error message.
+
+**errLog** string
+
+Log generated by the Platform if the deep linking process finishes with an error. Sending this will cause the LMS to reject the deep linking submission and display the error message.
+
+**Responses**
+
+-   200
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**form** string **required**
+
+Self-submitting form that must be appended to the HTML body.
+
+```
+{  
+  "form": "<form id=\"ltijs_submit\" style=\"display: none;\" action=\"https://ltiadvantagevalidator.imsglobal.org/ltitool/deeplinkresponse.html\" method=\"POST\"><input type=\"hidden\" name=\"JWT\" value=\"eyJhbGciOiJIUzIVCJ9.eyJzdWIbmFtZSI6IG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKV_adQssw5c\" /></form><script>document.getElementById(\"ltijs_submit\").submit()</script>"}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/post-api-deeplinking-message/index.md">
+---
+title: Build Deep-Linking Form Components | LTIAAS
+url: https://docs.ltiaas.com/api/post-api-deeplinking-message
+source: LTIaaS Documentation
+---
+
+# Build Deep-Linking Form Components | LTIAAS
+
+-   [](/)
+-   Deep Linking
+-   Build Deep-Linking Form Components
+
+## Build Deep-Linking Form Components[​](#build-deep-linking-form-components "Direct link to heading")
+
+If your application is a hub of multiple resources and/or activities, the LTI® protocol makes this easy to manage through the *Deep Linking* service. You can use this service to allow teachers and administrators to select one specific resource from your application when creating a resource link (activity) in the LMS. LTIAAS gives you access to this service through the Deep Linking flow and `/api/deeplinking` API endpoint.
+
+This endpoint will provide you with the information necessary to build your own self-submitting form. Please check our [Performing Deep Linking guide](/guides/api/deeplinking) and its [Creating your own submission form section](/guides/api/deeplinking#creating-your-own-submission-form) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+application/json
+
+**Request Body**
+
+**contentItems** object\[\] **required**
+
+-   Array \[
+
+**type** string **required**
+
+**Possible values:** \[`link`, `ltiResourceLink`, `file`, `html`, `image`\]
+
+The type of the content item
+
+**url** string
+
+A URL pointing to your LTIAAS instance. In order to pass parameters to your Tool and identify the selected resource you can add query parameters to the URL.
+
+> Example:
+> 
+> -   URL passed inside the Deep Linking content item: `https://your.ltiaas.com?resource=1234`
+> -   URL the user will be redirected to after a successful launch from the created resource: `https://yourtool.com?resource=1234`
+
+**title** string
+
+plain text to use as the title or heading for content.
+
+**text** string
+
+plain text description of the content item intended to be displayed to all users who can access the item.
+
+**icon** object
+
+Fully qualified URL, height, and width of an icon image to be placed with the file. A platform may not support the display of icons, but where it does, it may choose to use a local copy of the icon rather than linking to the URL provided (which would also allow it to resize the image to suit its needs).
+
+**url** uri
+
+fully qualified URL to the image file.
+
+**width** integer
+
+integer representing the width in pixels of the image.
+
+**height** integer
+
+integer representing the height in pixels of the image.
+
+**thumbnail** object
+
+Fully qualified URL, height, and width of a thumbnail image to be made a hyperlink. This allows the hyperlink to be opened within the platform from text or an image, or from both.
+
+**url** uri
+
+fully qualified URL to the image file.
+
+**width** integer
+
+integer representing the width in pixels of the image.
+
+**height** integer
+
+integer representing the height in pixels of the image.
+
+**embed** object
+
+The embed property has a single required property html that contains the HTML fragment to embed the resource directly inside HTML. It is commonly used as a way to embed a resource in an HTML editor. Platform must make sure to properly sanitize the HTML prior to inclusion.
+
+**html** string
+
+the HTML fragment to embed the resource directly inside HTML.
+
+**window** object
+
+The window property indicates how to open the resource in a new window/tab.
+
+**targetName** string
+
+String identifying the name of the window to open; this allows for a single window to be shared as the target of multiple links, preventing a proliferation of new windows/tabs.
+
+**width** integer
+
+integer representing the width in pixels of the new window.
+
+**height** integer
+
+integer representing the height in pixels of the new window.
+
+**windowFeatures** string
+
+Comma-separated list of window features as per the [window.open() definition](https://developer.mozilla.org/en-US/docs/Web/API/Window/open).
+
+**iframe** object
+
+The iframe property indicates the resource can be embedded using an iframe. The child parameters ndicates the dimension and the src URL for embedding
+
+**src** string
+
+required parameter indicating the URL to use as the src of the iframe. The src value may differ from the link url.
+
+**width** integer
+
+integer representing the width in pixel of the new iframe.
+
+**height** integer
+
+integer representing the height in pixel of the new iframe.
+
+**custom** object
+
+```
+A map of key/value custom parameters. Those parameters MUST be included in the LtiResourceLinkRequest payload. Value may include substitution parameters as defined in the LTI® Core Specification [LTI®-13](https://www.imsglobal.org/spec/lti/v1p3/). Map values must be strings. Note that "empty-string" is a valid value (""); however, null is not a valid value.
+```
+
+**lineItem** object
+
+A lineItem object that indicates this activity is expected to receive scores; the platform may automatically create a corresponding line item when the resource link is created, using the maximum score as the default maximum points. The resource\_id, tag and scoreMaximum are defined in the [LTI®-AGS-20](https://www.imsglobal.org/spec/lti-ags/v2p0/). A line item created as a result of a Deep Linking interaction must be exposed in a subsequent line item service call, with the resourceLinkId of the associated resource link, as well as the resourceId and tag if present in the line item definition.
+
+**label** string
+
+label for the line item. If not present, the title of the content item must be used.
+
+**scoreMaximum** number
+
+Positive decimal value indicating the maximum score possible for this activity.
+
+**resourceId** string
+
+Tool provided ID for the resource.
+
+**tag** string
+
+Additional information about the line item; may be used by the tool to identify line items attached to the same resource or resource link (example: grade, originality, participation).
+
+**gradesReleased** boolean
+
+boolean to indicate if the platform should release the grades, e.g., to learners.
+
+**available** object
+
+Indicates the initial start and end time this activity should be made available to learners. A platform may choose to make an item not accessible by hiding it, or by disabling the link, or some other method which prevents the link from being opened by a learner. The initial value may subsequently be changed within the platform and the tool may use the ResourceLink.available.startDateTime and ResourceLink.available.endDateTime substitution parameters defined in LTI® Core specification [LTI®-13](https://www.imsglobal.org/spec/lti/v1p3/) within custom parameters to get the actual values at launch time. Note there may be many factors controlling the availability of an item by the platform, and tools are not guaranteed to receive available start and end times in a launch, even if they set them when creating content.
+
+**startDateTime** date-time
+
+ISO 8601 date and time when the link becomes accessible [ISO8601](http://www.iso.org/iso/catalogue_detail?csnumber=40874).
+
+**endDateTime** date-time
+
+ISO 8601 date and time when the link stops being accessible [ISO8601](https://www.imsglobal.org/spec/lti-dl/v2p0/#bib-iso8601).
+
+**submission** object
+
+Indicates the initial start and end time submissions for this activity can be made by learners. The initial value may subsequently be changed within the platform and the tool may use the ResourceLink.submission.startDateTime and ResourceLink.submission.endDateTime substitution parameters defined in LTI® Core specification [LTI®-13](https://www.imsglobal.org/spec/lti/v1p3/) within custom parameters to get the actual values at launch time.
+
+**startDateTime** date-time
+
+ISO 8601 Date and time when the link can start receiving submissions [http://www.iso.org/iso/catalogue\_detail?csnumber=40874](http://www.iso.org/iso/catalogue_detail?csnumber=40874).
+
+**endDateTime** date-time
+
+ISO 8601 Date and time when the link stops accepting submissions [http://www.iso.org/iso/catalogue\_detail?csnumber=40874](http://www.iso.org/iso/catalogue_detail?csnumber=40874).
+
+**expiresAt** date-time
+
+```
+ISO 8601 Date and time [http://www.iso.org/iso/catalogue_detail?csnumber=40874](http://www.iso.org/iso/catalogue_detail?csnumber=40874). The URL will be available until this time. No guarantees after that. (e.g. 2014-03-05T12:34:56Z).
+```
+
+**html** string
+
+When type=="html". HTML fragment to be embedded. The platform is expected to sanitize it against cross-site scripting attacks.
+
+**width** integer
+
+Integer representing the width in pixels of the image.
+
+**height** integer
+
+Integer representing the height in pixels of the image.
+
+-   \]
+
+**options** object
+
+An object containing one or more optional fields to aid in error conditions
+
+**message** string
+
+Message displayed to the user if the deep linking process is successfully completed.
+
+**log** string
+
+Log generated by the Platform if the deep linking process is successfully completed.
+
+**errMessage** string
+
+Message displayed to the user if the deep linking process finishes with an error. Sending this will cause the LMS to reject the deep linking submission and display the error message.
+
+**errLog** string
+
+Log generated by the Platform if the deep linking process finishes with an error. Sending this will cause the LMS to reject the deep linking submission and display the error message.
+
+**Responses**
+
+-   200
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**message** string **required**
+
+Signed JWT containing the selected resources that must be inserted in a self-submitting form and appended to the HTML body.
+
+**target** string **required**
+
+Endpoint to which the message has to be submitted to in order to finish the Deep Linking flow
+
+```
+{  
+  "message": "eyJhbGciOiJIUzIVCJ9.eyJzdWIbmFtZSI6IG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKV_adQssw5c",  "target": "https://ltiadvantagevalidator.imsglobal.org/ltitool/deeplinkresponse.html"}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/post-api-lineitems/index.md">
+---
+title: Create Line Items | LTIAAS
+url: https://docs.ltiaas.com/api/post-api-lineitems
+source: LTIaaS Documentation
+---
+
+# Create Line Items | LTIAAS
+
+-   [](/)
+-   Line Items
+-   Create Line Items
+
+## Create Line Items[​](#create-line-items "Direct link to heading")
+
+The LTI® protocol allows you to create grade lines in the LMS grade book through the *Assignment and Grades - Line Items* service. In the context of LTI®, these grade lines are called *line items*. LTIAAS gives you access to this service through the `/api/lineitems` API endpoint.
+
+Please check our [Manipulating grade lines guide](/guides/api/manipulating-grade-lines) and its [Creating grade lines section](/guides/api/manipulating-grade-lines#creating-a-grade-line) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+✅
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+application/json
+
+**Request Body**
+
+**label** string **required**
+
+The label is a short string with a human readable text for the line item. It MUST be specified and not blank when posted by the tool. A platform must always include the label.
+
+**scoreMaximum** number **required**
+
+**Possible values:** `> 0`
+
+The maximum score for this line item. Maximum score MUST be a numeric non-null value, strictly greater than 0.
+
+**resourceLinkId** string
+
+A line item MAY be attached to a resource link by including a 'resourceLinkId' in the payload. The resource link MUST exist in the context where the line item is created, and MUST be a link owned by the same tool. If not, the line item creation MUST fail with a response code of Not Found 404.
+
+The platform MAY remove the line items attached to a resource link if the resource link itself is removed.
+
+**resourceId** string
+
+A tool MAY identify to which of its resources the line item is attached to by including a non blank value for resourceId in the payload. This value is a string. For example, resourceId can be 'quiz-231' or any other resource identifier uniquely identifying a resource in a given context.
+
+Multiple line items can share the same resourceId within a given context. resourceId must be preserved when a context is copied if the line items are included in the copy.
+
+If no resourceId is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**tag** string
+
+A tool MAY further qualify a line item by setting a value to tag. The attribute is a string. For example, one assignment resource may have 2 line items, one with tag as 'grade' and the other tagged as 'originality'.
+
+Multiple line items can share the same tag within a given context. tag must be preserved when a context is copied if the line items are included in the copy.
+
+If no tag is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**startDateTime** date-time
+
+A tool MAY specify the initial start time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item can start receiving submissions.
+
+**endDateTime** date-time
+
+A tool MAY specify the initial end time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item stops receiving submissions.
+
+**gradesReleased** boolean
+
+The tool specifies this optional property when it wishes the grades to be released. It is up to the LMS to decide how to handle this and every LMSes behavior may be different.
+
+**Responses**
+
+-   201
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**id** string **required**
+
+URL uniquely identifying the result record.
+
+**label** string **required**
+
+The label is a short string with a human readable text for the line item. It MUST be specified and not blank when posted by the tool. A platform must always include the label.
+
+**scoreMaximum** number **required**
+
+**Possible values:** `> 0`
+
+The maximum score for this line item. Maximum score MUST be a numeric non-null value, strictly greater than 0.
+
+**resourceLinkId** string
+
+A line item MAY be attached to a resource link by including a 'resourceLinkId' in the payload. The resource link MUST exist in the context where the line item is created, and MUST be a link owned by the same tool. If not, the line item creation MUST fail with a response code of Not Found 404.
+
+The platform MAY remove the line items attached to a resource link if the resource link itself is removed.
+
+**resourceId** string
+
+A tool MAY identify to which of its resources the line item is attached to by including a non blank value for resourceId in the payload. This value is a string. For example, resourceId can be 'quiz-231' or any other resource identifier uniquely identifying a resource in a given context.
+
+Multiple line items can share the same resourceId within a given context. resourceId must be preserved when a context is copied if the line items are included in the copy.
+
+If no resourceId is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**tag** string
+
+A tool MAY further qualify a line item by setting a value to tag. The attribute is a string. For example, one assignment resource may have 2 line items, one with tag as 'grade' and the other tagged as 'originality'.
+
+Multiple line items can share the same tag within a given context. tag must be preserved when a context is copied if the line items are included in the copy.
+
+If no tag is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**startDateTime** date-time
+
+A tool MAY specify the initial start time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item can start receiving submissions.
+
+**endDateTime** date-time
+
+A tool MAY specify the initial end time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item stops receiving submissions.
+
+**gradesReleased** boolean
+
+The tool specifies this optional property when it wishes the grades to be released. It is up to the LMS to decide how to handle this and every LMSes behavior may be different.
+
+```
+{  
+  "id": "https://lms.example.com/course/1/lineitems/1",  "label": "Activity",  "scoreMaximum": 95,  "resourceLinkId": "1g3k4dlk49fk",  "resourceId": "quiz-231",  "tag": "grade",  "startDateTime": "2022-03-06T20:05:02Z",  "endDateTime": "2022-04-06T22:05:03Z",  "gradesReleased": true}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/post-api-registrations-complete/index.md">
+---
+title: Complete Dynamic Registration Process | LTIAAS
+url: https://docs.ltiaas.com/api/post-api-registrations-complete
+source: LTIaaS Documentation
+---
+
+# Complete Dynamic Registration Process | LTIAAS
+
+-   [](/)
+-   Dynamic Registration
+-   Complete Dynamic Registration Process
+
+## Complete Dynamic Registration Process[​](#complete-dynamic-registration-process "Direct link to heading")
+
+Complete the dyanmic registration process.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+✅
+
+**Path Parameters**
+
+**registrationID** string **required**
+
+The ID of the dynamic registration
+
+application/json
+
+**Request Body**
+
+All parameters are optional
+
+**platformName** string
+
+**autoActivate** boolean
+
+**messages** object\[\]
+
+-   Array \[
+
+**type** string
+
+**placements** string\[\]
+
+-   \]
+
+**Responses**
+
+-   200
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+Example
+
+* * *
+
+**Schema**
+
+**html** string **required**
+
+An HTML snippet that needs to be appended to the document body.
+
+**platformId** string **required**
+
+The ID of the newly registered platform
+
+```
+{  
+  "html": "string",  "platformId": "string"}
+```
+
+```
+{  
+  "html": "<script>(window.opener || window.parent).postMessage({subject:'org.imsglobal.lti.close'}, '*');</script>",  "platformId": "A2F48n9Ss8Hjpw4gjo0"}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+Example
+
+* * *
+
+**Schema**
+
+**status** integer
+
+**Default value:** `401`
+
+**error** string
+
+**Default value:** `Unauthorized`
+
+**details** object
+
+**message** string
+
+**Default value:** `INVALID_LTIK_AUTH_AUTHORIZATION_HEADER`
+
+**description** string
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid API key"  }}
+```
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid API key"  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/post-lineitem-scores/index.md">
+---
+title: Submit Scores to Line Item | LTIAAS
+url: https://docs.ltiaas.com/api/post-lineitem-scores
+source: LTIaaS Documentation
+---
+
+# Submit Scores to Line Item | LTIAAS
+
+-   [](/)
+-   Scores
+-   Submit Scores to Line Item
+
+## Submit Scores to Line Item[​](#submit-scores-to-line-item "Direct link to heading")
+
+The LTI® protocol allows you to submit scores to the LMS grade book through the *Assignment and Grades - Scores* service. LTIAAS gives you access to this service through the `/api/lineitems/:lineItemID/scores` API endpoint.
+
+Please check our [Manipulating grades guide](/guides/api/manipulating-grades) and its [Submitting grades](/guides/api/manipulating-grades#submitting-grades) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+✅
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+**Path Parameters**
+
+**lineItemID** uri **required**
+
+The URL encoded line item ID.
+
+application/json
+
+**Request Body**
+
+**userId** string **required**
+
+The LTI® user ID identifying the recipient of the Score (usually a learner).
+
+**activityProgress** string **required**
+
+**Possible values:** \[`Initiated`, `Started`, `InProgress`, `Submitted`, `Completed`\]
+
+Used to indicate to the tool platform the status of the user towards the activity's completion.
+
+**gradingProgress** string **required**
+
+**Possible values:** \[`FullyGraded`, `Pending`, `PendingManual`, `Failed`, `NotReady`\]
+
+Used to indicate to the platform the status of the grading process, including allowing to inform when human intervention is needed.
+
+**scoreGiven** number
+
+All scoreGiven values MUST be positive number (including 0). scoreMaximum represents the denominator and MUST be present when scoreGiven is present. When scoreGiven is not present or null, this indicates there is presently no score for that user, and the platform should clear any previous score value it may have previously received from the tool and stored for that user and line item.
+
+The platform MUST support scoreGiven higher than scoreMaximum. For example, if the tool passes normalized score, ranging from 0 to 1, the scoreMaximum would be 1. scoreGiven: 1.1 would be a valid score.
+
+A scoreGiven MAY be used to pass actual points value, in which case a value for scoreMaximum would be the maximum points possible for that student. For example, the tool MAY pass scoreGiven: 1, scoreMaximum: 3 instead of scoreGiven: 0.33333, scoreMaximum: 1.
+
+Usually a platform will just re-scale the value to the line item's scoreMaximum. For example, if the line item maximum is 6 in the above example, then it would show 2 points as the given score; accordingly, the result would contain resultScore of 2 and resultMaximum of 6.
+
+**scoreMaximum** number
+
+The 'scoreMaximum' value MUST be a positive number (not including 0). This field is required if the 'scoreGiven' value is present.
+
+**comment** string
+
+comment is intended to be seen by both the student and the instructors. This specification does not support an history of comments; the platform MUST update its comment with every score update. If a score update does not contain a comment, a blank or null, then the comment value MUST be cleared in the platform if the previously recorded comment was also a comment sent from the tool.
+
+**Responses**
+
+-   204
+-   401
+
+* * *
+
+No Content
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/put-admin-platforms-id/index.md">
+---
+title: Update Platform by ID | LTIAAS
+url: https://docs.ltiaas.com/api/put-admin-platforms-id
+source: LTIaaS Documentation
+---
+
+# Update Platform by ID | LTIAAS
+
+-   [](/)
+-   Platforms
+-   Update Platform by ID
+
+## Update Platform by ID[​](#update-platform-by-id "Direct link to heading")
+
+Update a platform by ID
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+✅
+
+**Path Parameters**
+
+**platformID** string **required**
+
+The platform ID
+
+application/json
+
+**Request Body**
+
+**url** string **required**
+
+Platform URL (i.e. iss)
+
+**clientId** string **required**
+
+Platform client ID
+
+**name** string **required**
+
+Platform name
+
+**authenticationEndpoint** string **required**
+
+Platform authentication endpoint
+
+**accesstokenEndpoint** string **required**
+
+Platform access token endpoint
+
+**authConfig** object **required**
+
+Platform token authentication configuration object
+
+**key** string **required**
+
+Platform token authentication key
+
+**method** **required**
+
+**Possible values:** \[`JWK_SET`, `JWK_KEY`, `RSA_KEY`\]
+
+Platform token authentication method. **MUST be one of JWK\_SET, JWK\_KEY or RSA\_KEY**.
+
+**Responses**
+
+-   200
+
+* * *
+
+Returns the platform with the matching platformID.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+Example
+
+* * *
+
+**Schema**
+
+**url** string **required**
+
+Platform URL
+
+**clientId** string **required**
+
+Platform client ID
+
+**name** string **required**
+
+Platform name
+
+**authenticationEndpoint** string **required**
+
+Platform authentication endpoint
+
+**authConfig** object **required**
+
+Platform access token endpoint
+
+**key** string **required**
+
+Platform token authentication key
+
+**method** **required**
+
+**Possible values:** \[`JWK_SET`, `JWK_KEY`, `RSA_KEY`\]
+
+Platform token authentication method. **MUST be one of JWK\_SET, JWK\_KEY or RSA\_KEY**
+
+**accesstokenEndpoint** string **required**
+
+Platform access token endpoint
+
+**id** string **required**
+
+Platform ID
+
+**publicKey** string **required**
+
+Platform Public Key
+
+**active** boolean **required**
+
+true if the registration is active and allowed to launch
+
+```
+{  
+  "url": "string",  "clientId": "string",  "name": "string",  "authenticationEndpoint": "string",  "authConfig": {    "key": "string"  },  "accesstokenEndpoint": "string",  "id": "string",  "publicKey": "string",  "active": true}
+```
+
+```
+{  
+  "url": "https://platform.org",  "clientId": "10000000000001",  "name": "Platform 1",  "authenticationEndpoint": "https://platform.org/lti/authorize",  "authConfig": {    "key": "https://platform.org/lti/security/jwks",    "method": "JWK_SET"  },  "accesstokenEndpoint": "https://platform.org/login/oauth2/token",  "id": "f33d6c450b7632c1ff87586c4f150eee",  "publicKey": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAymGcob5nh7kKHWCNQ3J6\n4dX5fknKrwCifFtt32ov09IUHWj2WwTSnZOvi43a3IpJ+zCj9dUnW9NF+Axx+s/X\nNUIcJWLAZtf3QkDAChJZeEEsxptFm9bFfKZjXlq1e5XFFetZBgUN0d+KDJYZP8BV\nQ1bAIwRcrwDDqVXdmYJlwfejstSm8oPkW7NJv6HBsqcloJVlwIfl5ltZfAUiKgIP\nuecHkD16ma712VxSDhZALhhtgGNRbur64nfkEWenYjCyECWMEFJBBw+ef2FAR5g/\nWtvzvkHZmoG79p/9eBw1wM09edT/GnXMXrv9CLWaTz7aTrn0GCBSK/K1unBaF8Q4\nbzRDDrbETKSLc9TPbD7xw+RIMOjLnJXUSz/2FfqmJggzzBOnISwQsuFPIK8IaCdS\nM+CHpHuUHMY8cPNgn63HiWEuy9evrny6gAK40pIgCpTGdsf0EYvOYn/kP7wElCDf\nmogRFJKBRH7BN0Syk+aMmt1t4mPP1QTk3HdfUmdZTU3ueeaIJ18m6Kif88wtij4F\n6PZDrs6h5BCEZUtpl78+H030TSm7OrY9SlOPcD/K+4fZlrkiuFc2hhjb1awTHd2I\nGzWZ8ur3Dr7V/Zgdm6Tio33ot8dEhJcKXbC8V1jhiVtewyDGqFSOBTRuhxNIt0/0\n24z6Wb9bMUH/ztaywZjkIesCAwEAAQ==\n-----END PUBLIC KEY-----\n",  "active": true}
+```
+
+Loading...
+</file>
+
+<file path="ltiaas-docs/api/put-api-lineitems-lineitemid/index.md">
+---
+title: Update Line Item by ID | LTIAAS
+url: https://docs.ltiaas.com/api/put-api-lineitems-lineitemid
+source: LTIaaS Documentation
+---
+
+# Update Line Item by ID | LTIAAS
+
+-   [](/)
+-   Line Items
+-   Update Line Item by ID
+
+## Update Line Item by ID[​](#update-line-item-by-id "Direct link to heading")
+
+The LTI® protocol allows you to update(replace) a specific grade line in the LMS grade book through the *Assignment and Grades - Line Items* service. In the context of LTI®, these grade lines are called *line items*. LTIAAS gives you access to this service through the `/api/lineitems` API endpoint.
+
+Please check our [Manipulating grade lines guide](/guides/api/manipulating-grade-lines) and its [Updating a grade line by its ID section](/guides/api/manipulating-grade-lines##updating-a-grade-line-by-its-id) to learn more about using this endpoint.
+
+API Authentication Method
+
+Supported
+
+[`LTIK-AUTH-V2`](/guides/api/authentication#ltik-based-authentication)
+
+✅
+
+[`SERVICE-AUTH-V1`](/guides/api/authentication#service-key-based-authentication)
+
+✅
+
+[`Bearer`](/guides/api/authentication#bearer-api-key-based-authentication)
+
+**Path Parameters**
+
+**lineItemID** uri **required**
+
+The URL encoded line item ID.
+
+application/json
+
+**Request Body**
+
+**label** string **required**
+
+The label is a short string with a human readable text for the line item. It MUST be specified and not blank when posted by the tool. A platform must always include the label.
+
+**scoreMaximum** number **required**
+
+**Possible values:** `> 0`
+
+The maximum score for this line item. Maximum score MUST be a numeric non-null value, strictly greater than 0.
+
+**resourceLinkId** string
+
+A line item MAY be attached to a resource link by including a 'resourceLinkId' in the payload. The resource link MUST exist in the context where the line item is created, and MUST be a link owned by the same tool. If not, the line item creation MUST fail with a response code of Not Found 404.
+
+The platform MAY remove the line items attached to a resource link if the resource link itself is removed.
+
+**resourceId** string
+
+A tool MAY identify to which of its resources the line item is attached to by including a non blank value for resourceId in the payload. This value is a string. For example, resourceId can be 'quiz-231' or any other resource identifier uniquely identifying a resource in a given context.
+
+Multiple line items can share the same resourceId within a given context. resourceId must be preserved when a context is copied if the line items are included in the copy.
+
+If no resourceId is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**tag** string
+
+A tool MAY further qualify a line item by setting a value to tag. The attribute is a string. For example, one assignment resource may have 2 line items, one with tag as 'grade' and the other tagged as 'originality'.
+
+Multiple line items can share the same tag within a given context. tag must be preserved when a context is copied if the line items are included in the copy.
+
+If no tag is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**startDateTime** date-time
+
+A tool MAY specify the initial start time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item can start receiving submissions.
+
+**endDateTime** date-time
+
+A tool MAY specify the initial end time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item stops receiving submissions.
+
+**gradesReleased** boolean
+
+The tool specifies this optional property when it wishes the grades to be released. It is up to the LMS to decide how to handle this and every LMSes behavior may be different.
+
+**Responses**
+
+-   201
+-   401
+
+* * *
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**id** uri **required**
+
+URL uniquely identifying the result record.
+
+**label** string **required**
+
+The label is a short string with a human readable text for the line item. It MUST be specified and not blank when posted by the tool. A platform must always include the label.
+
+**scoreMaximum** number **required**
+
+**Possible values:** `> 0`
+
+The maximum score for this line item. Maximum score MUST be a numeric non-null value, strictly greater than 0.
+
+**resourceLinkId** string
+
+A line item MAY be attached to a resource link by including a 'resourceLinkId' in the payload. The resource link MUST exist in the context where the line item is created, and MUST be a link owned by the same tool. If not, the line item creation MUST fail with a response code of Not Found 404.
+
+The platform MAY remove the line items attached to a resource link if the resource link itself is removed.
+
+**resourceId** string
+
+A tool MAY identify to which of its resources the line item is attached to by including a non blank value for resourceId in the payload. This value is a string. For example, resourceId can be 'quiz-231' or any other resource identifier uniquely identifying a resource in a given context.
+
+Multiple line items can share the same resourceId within a given context. resourceId must be preserved when a context is copied if the line items are included in the copy.
+
+If no resourceId is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**tag** string
+
+A tool MAY further qualify a line item by setting a value to tag. The attribute is a string. For example, one assignment resource may have 2 line items, one with tag as 'grade' and the other tagged as 'originality'.
+
+Multiple line items can share the same tag within a given context. tag must be preserved when a context is copied if the line items are included in the copy.
+
+If no tag is defined for a lineitem, the platform may omit this attribute, or include it with a blank or null value.
+
+**startDateTime** date-time
+
+A tool MAY specify the initial start time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item can start receiving submission.
+
+**endDateTime** date-time
+
+A tool MAY specify the initial end time submissions for this line item can be made by learners. The initial value may subsequently be changed within the platform.
+
+ISO 8601 Date and time when the line item stops receiving submissions.
+
+**gradesReleased** boolean
+
+The tool specifies this optional property when it wishes the grades to be released. It is up to the LMS to decide how to handle this and every LMSes behavior may be different.
+
+```
+{  
+  "id": "https://lms.example.com/course/1/lineitems/1",  "label": "Activity",  "scoreMaximum": 100,  "resourceLinkId": "1g3k4dlk49fk",  "resourceId": "quiz-231",  "tag": "grade",  "startDateTime": "2018-03-06T20:05:02Z",  "endDateTime": "2018-04-06T22:05:03Z",  "gradesReleased": true}
+```
+
+Unauthorized. Please check our guide on [Authenticating API requests](/guides/api/authentication) to learn about how authentication works in the LTIAAS API.
+
+application/json
+
+Schema
+
+Example (from schema)
+
+* * *
+
+**Schema**
+
+**status** number **required**
+
+**Default value:** `401`
+
+**error** string **required**
+
+**Default value:** `Unauthorized`
+
+**details** object **required**
+
+**message** string **required**
+
+**description** string **required**
+
+```
+{  
+  "status": 401,  "error": "Unauthorized",  "details": {    "message": "INVALID_LTIK_AUTH_AUTHORIZATION_HEADER",    "description": "Invalid or expired ltik."  }}
+```
+
+Loading...
+</file>
+
+</files>

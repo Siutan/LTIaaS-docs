@@ -1,0 +1,436 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get LTIaaS docs",
+    "description": "Retrieves docs for LTIaas.",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://docs.ltiaas.com/guides/api"
+    }
+  ],
+  "paths": {
+    "/guides/api/introduction": {
+      "get": {
+        "summary": "Using the LTIAAS API",
+        "description": "Documentation page: Using the LTIAAS API",
+        "operationId": "guides_api_introduction",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/roster": {
+      "get": {
+        "summary": "Retrieving course roster",
+        "description": "Documentation page: Retrieving course roster",
+        "operationId": "guides_api_roster",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/manipulating-grades": {
+      "get": {
+        "summary": "Manipulating grades",
+        "description": "Documentation page: Manipulating grades",
+        "operationId": "guides_api_manipulating_grades",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/authentication": {
+      "get": {
+        "summary": "Authenticating API requests",
+        "description": "Documentation page: Authenticating API requests",
+        "operationId": "guides_api_authentication",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/manipulating-grade-lines": {
+      "get": {
+        "summary": "Manipulating grade lines",
+        "description": "Documentation page: Manipulating grade lines",
+        "operationId": "guides_api_manipulating_grade_lines",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/pagination": {
+      "get": {
+        "summary": "Handling pagination",
+        "description": "Documentation page: Handling pagination",
+        "operationId": "guides_api_pagination",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/async": {
+      "get": {
+        "summary": "Accessing the API asynchronously",
+        "description": "Documentation page: Accessing the API asynchronously",
+        "operationId": "guides_api_async",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/idtoken": {
+      "get": {
+        "summary": "Retrieving the ID Token",
+        "description": "Documentation page: Retrieving the ID Token",
+        "operationId": "guides_api_idtoken",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/deeplinking": {
+      "get": {
+        "summary": "Performing Deep Linking",
+        "description": "Documentation page: Performing Deep Linking",
+        "operationId": "guides_api_deeplinking",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/dynamic-registration": {
+      "get": {
+        "summary": "Performing Dynamic Registration",
+        "description": "Documentation page: Performing Dynamic Registration",
+        "operationId": "guides_api_dynamic_registration",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/authentication#service-key-based-authentication": {
+      "get": {
+        "summary": "Authenticating API requests",
+        "description": "Documentation page: Authenticating API requests",
+        "operationId": "guides_api_authentication_service_key_based_authentication",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/manipulating-grade-lines#retrieving-grade-lines-for-a-context": {
+      "get": {
+        "summary": "Manipulating grade lines",
+        "description": "Documentation page: Manipulating grade lines",
+        "operationId": "guides_api_manipulating_grade_lines_retrieving_grade_lines_for_a_context",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/idtoken#deeplinking": {
+      "get": {
+        "summary": "Retrieving the ID Token",
+        "description": "Documentation page: Retrieving the ID Token",
+        "operationId": "guides_api_idtoken_deeplinking",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/idtoken#namesandroles": {
+      "get": {
+        "summary": "Retrieving the ID Token",
+        "description": "Documentation page: Retrieving the ID Token",
+        "operationId": "guides_api_idtoken_namesandroles",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/idtoken#performing-sso": {
+      "get": {
+        "summary": "Retrieving the ID Token",
+        "description": "Documentation page: Retrieving the ID Token",
+        "operationId": "guides_api_idtoken_performing_sso",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/authentication#ltik-based-authentication": {
+      "get": {
+        "summary": "Authenticating API requests",
+        "description": "Documentation page: Authenticating API requests",
+        "operationId": "guides_api_authentication_ltik_based_authentication",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/authentication#bearer-api-key-based-authentication": {
+      "get": {
+        "summary": "Authenticating API requests",
+        "description": "Documentation page: Authenticating API requests",
+        "operationId": "guides_api_authentication_bearer_api_key_based_authentication",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/idtoken#assignmentandgrades": {
+      "get": {
+        "summary": "Retrieving the ID Token",
+        "description": "Documentation page: Retrieving the ID Token",
+        "operationId": "guides_api_idtoken_assignmentandgrades",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guides/api/idtoken#context": {
+      "get": {
+        "summary": "Retrieving the ID Token",
+        "description": "Documentation page: Retrieving the ID Token",
+        "operationId": "guides_api_idtoken_context",
+        "tags": [
+          "Documentation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documentation content",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

@@ -1,0 +1,341 @@
+---
+title: Manipulating grade lines
+url: https://docs.ltiaas.com/guides/api/manipulating-grade-lines#retrieving-grade-lines-for-a-context
+source: LTIaaS Documentation
+---
+
+# Manipulating grade lines
+
+-   [](/)
+-   [Using the LTIAAS API](/guides/api/introduction)
+-   Manipulating grade lines
+
+On this page
+
+# Manipulating grade lines
+
+tip
+
+Make sure you've read about [authenticating API requests](/guides/api/authentication) before proceeding to the guide below.
+
+info
+
+The Line items endpoint accepts both the [ltik based](/guides/api/authentication#ltik-based-authentication) and [service key based](/guides/api/authentication#service-key-based-authentication) API authentication methods.
+
+The LTI® protocol allows you to manipulate grade lines in the LMS grade book through the *Assignment and Grades - Line Items* service. In the context of LTI®, these grade lines are called *line items*. LTIAAS gives you access to this service through the `/api/lineitems` API endpoint.
+
+![Accessing line items API](/assets/ideal-img/flow_lineitems.3a6dadb.1118.png)
+
+![Accessing line items API](/assets/ideal-img/flow_lineitems_dark.0ea3775.1118.png)
+
+Accessing line items API
+
+## The line item object[​](#the-line-item-object "Direct link to heading")
+
+info
+
+This guide focuses on the most common and/or relevant fields of the line item object, a detailed description of available fields can be found in the IMS Line Item Service documentation:
+
+Learning Tools Interoperability (LTI®) Assignment and Grade Services Specification, IMS Final Release Spec Version 2.0, 1EdTech Consortium, April 2019, 3.2 Line item service scope and allowed http methods, [https://www.imsglobal.org/spec/lti-ags/v2p0/#line-item-service-scope-and-allowed-http-methods](https://www.imsglobal.org/spec/lti-ags/v2p0/#line-item-service-scope-and-allowed-http-methods).
+
+The *line item* is the LTI® representation of a grade line in the LMS grade book. Each line item contains information about the grade line it represents.
+
+```
+{  
+  "id": "https://lms.example.com/course/1/lineitems/1",  "scoreMaximum" : 100,  "label" : "Activity 1",  "tag" : "activity",  "resourceLinkId" : "1g3k4dlk49fk",  "resourceId" : "my-tool-activity-1"}
+```
+
+#### id[​](#id "Direct link to heading")
+
+The `id` field is the identifier for the line item and it's a URL that points to a specific grade line in the LMS grade book. This field is automatically populated by the LMS when the line item is created.
+
+#### scoreMaximum \[*required*\][​](#scoremaximum-required "Direct link to heading")
+
+The `scoreMaximum` field is the maximum score that can be assigned to the line item. MUST be a numeric non-null value, strictly greater than 0.
+
+#### label \[*required*\][​](#label-required "Direct link to heading")
+
+The `label` field is the name of the grade line represented by the line item.
+
+#### tag[​](#tag "Direct link to heading")
+
+The `tag` field is a string that can be used to further identify grade lines and group them together.
+
+#### resourceLinkId[​](#resourcelinkid "Direct link to heading")
+
+The `resourceLinkId` field is the identifier of the resource link (activity) this grade line is associated with in the LMS.
+
+#### resourceId[​](#resourceid "Direct link to heading")
+
+The `resourceId` field is a tool provided identifier of the resource that this grade line is associated with inside the LTI® tool.
+
+## Creating a grade line[​](#creating-a-grade-line "Direct link to heading")
+
+To create grade lines, you need to make a POST request to the `/api/lineitems` endpoint of your LTIAAS' account subdomain. The created line item will be associated with the context that originated the LTI® launch.
+
+tip
+
+For a description of all accepted fields, as well as possible response bodies and statuses, check the [\[POST\] Line Items endpoint API Reference](/api/post-api-lineitems).
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/lineitems POST request  
+const body = {  
+  label: 'Activity 1',  scoreMaximum: 100}  
+const response = requests.post('https://your.ltiaas.com/api/lineitems', body, { headers })
+```
+
+info
+
+When creating a new grade line, the `label` and `scoreMaximum` fields are required.
+
+A successful response will contain the newly created line item object with the `id` field populated and any other additional accepted fields you may have provided.
+
+```
+{  
+  "id": "https://lms.example.com/course/1/lineitems/1",  "scoreMaximum" : 100,  "label" : "Activity 1"}
+```
+
+### Binding a grade line to an activity[​](#binding-a-grade-line-to-an-activity "Direct link to heading")
+
+If you want to bind a new grade line to a specific activity in the LMS, you can populate the `resourceLinkId` field in the request body.
+
+tip
+
+The resource link ID for an activity can be retrieved from the `idtoken.launch.resourceLink.id` field of the [ID Token](/guides/api/idtoken) generated by launching the LTI® tool from that activity.
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/idtoken GET request  
+const idtoken = requests.get('https://your.ltiaas.com/api/idtoken', { headers })  
+const resourceLinkId = response['launch']['resourceLink']['id']  
+// Making /api/lineitems POST request  
+const body = {  
+  label: 'Activity 1',  scoreMaximum: 100,  resourceLinkId: resourceLinkId}  
+const response = requests.post('https://your.ltiaas.com/api/lineitems', body, { headers })
+```
+
+tip
+
+Adding a resourceLinkId allows you to later [search for grade lines associated a specific activity](#filtering-grade-lines-by-the-associated-activity).
+
+### Binding a grade line to a tool resource[​](#binding-a-grade-line-to-a-tool-resource "Direct link to heading")
+
+If you want to bind a new grade line to a specific resource inside your LTI® tool, you can populate the `resourceId` field in the request body with an identifier for your internal resource.
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/lineitems POST request  
+const body = {  
+  label: 'Activity 1',  scoreMaximum: 100,  resourceId: 'my-tool-activity-1'}  
+const response = requests.post('https://your.ltiaas.com/api/lineitems', body, { headers })
+```
+
+tip
+
+Adding a resourceId allows you to later [search for grade lines associated a specific resource inside your LTI® tool](#filtering-grade-lines-by-the-associated-tool-resource).
+
+## Retrieving grade lines for a context[​](#retrieving-grade-lines-for-a-context "Direct link to heading")
+
+To retrieve grade lines from an LTI® context you need to make a GET request to the `/api/lineitems` endpoint of your LTIAAS' account subdomain.
+
+tip
+
+For a description of all accepted query parameters, as well as possible response bodies and statuses, check the [\[GET\] Line Items endpoint API Reference](/api/post-api-lineitems).
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/lineitems GET request  
+const response = requests.get('https://your.ltiaas.com/api/lineitems', { headers })  
+const lineItems = response['lineItems']
+```
+
+A successful response will be an object with a `lineItems` field containing an array of line item objects tied to that LTI® context.
+
+```
+{  
+  "lineItems": [    {      "id": "https://lms.example.com/course/1/lineitems/1",      "scoreMaximum" : 100,      "label" : "Activity 1"    },    {      "id": "https://lms.example.com/course/1/lineitems/2",      "scoreMaximum" : 100,      "label" : "Activity 2"    }  ]}
+```
+
+#### Response pagination fields[​](#response-pagination-fields "Direct link to heading")
+
+caution
+
+This functionality might not be supported by every LMS.
+
+The `next`, `prev`, `first` and `last` fields will only be present if there are more line items to be retrieved from the context. You can read more about this in the [Handling pagination guide](/guides/api/pagination).
+
+```
+{  
+  "lineItems": [...],  "next": "https://lms.example.com/course/1/lineitems?page=3",  "prev": "https://lms.example.com/course/1/lineitems?page=1",  "first": "https://lms.example.com/course/1/lineitems?page=1",  "last": "https://lms.example.com/course/1/lineitems?page=4"}
+```
+
+### Filtering grade lines by the associated activity[​](#filtering-grade-lines-by-the-associated-activity "Direct link to heading")
+
+If you want to retrieve only the grade lines associated to a specific activity, you can populate the `resourceLinkId` query parameter.
+
+tip
+
+The resource link ID for an activity can be retrieved from the `idtoken.launch.resourceLink.id` field of the [ID Token](/guides/api/idtoken) generated by launching the LTI® tool from that activity.
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/idtoken GET request  
+const idtoken = requests.get('https://your.ltiaas.com/api/idtoken', { headers })  
+const resourceLinkId = response['launch']['resourceLink']['id']  
+// Making /api/lineitems GET request  
+const response = requests.get(`https://your.ltiaas.com/api/lineitems?resourceLinkId=${resourceLinkId}`, { headers })  
+const lineItems = response['lineItems']
+```
+
+### Filtering grade lines by the associated tool resource[​](#filtering-grade-lines-by-the-associated-tool-resource "Direct link to heading")
+
+If you want to retrieve only the grade lines associated to a specific tool resource, you can populate the `resourceId` query parameter with an identifier for your internal resource.
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/lineitems GET request  
+const resourceId = 'my-tool-activity-1'  
+const response = requests.get(`https://your.ltiaas.com/api/lineitems?resourceId=${resourceId}`, { headers })  
+const lineItems = response['lineItems']
+```
+
+### Retrieving a grade line ID from the ID Token[​](#retrieving-a-grade-line-id-from-the-id-token "Direct link to heading")
+
+If there is only one grade line associated with a certain LTI® context, its ID might be present in the ID Token generated for that context in the `idtoken.services.assignmentAndGrades.lineItemId` field.
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/idtoken GET request  
+const idtoken = requests.get('https://your.ltiaas.com/api/idtoken', { headers })  
+const lineItemID = idtoken['services']['assignmentAndGrades']['lineItemId']
+```
+
+## Retrieving a grade line by its ID[​](#retrieving-a-grade-line-by-its-id "Direct link to heading")
+
+To retrieve a grade line by its ID you need to make a GET request to the `/api/lineitems/:lineItemID` endpoint of your LTIAAS' account subdomain.
+
+tip
+
+For a description of possible response bodies and statuses, check the [\[GET\] Line Item endpoint API Reference](/api/get-lineitem).
+
+info
+
+Line item IDs are URLs, so their value needs to be URL encoded to be safely sent as a query parameter.
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/lineitems/:lineItemID GET request  
+const lineItemId = 'https://lms.example.com/course/1/lineitems/1'  
+const urlSafeLineItemId = encodeURIComponent(lineItemId)  
+const lineItem = requests.get(`https://your.ltiaas.com/api/lineitems/${urlSafeLineItemId}`, { headers })
+```
+
+A successful response will contain the requested line item object.
+
+```
+{  
+  "id": "https://lms.example.com/course/1/lineitems/1",  "scoreMaximum" : 95,  "label" : "Activity 1 - New name"}
+```
+
+## Updating a grade line by its ID[​](#updating-a-grade-line-by-its-id "Direct link to heading")
+
+To update a grade line you need to make a PUT request to the `/api/lineitems/:lineItemID` endpoint of your LTIAAS' account subdomain.
+
+tip
+
+For a description of all accepted fields, as well as possible response bodies and statuses, check the [\[PUT\] Line Item endpoint API Reference](/api/put-api-lineitems-lineitemid).
+
+info
+
+Line item IDs are URLs, so their value needs to be URL encoded to be safely sent as a query parameter.
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/lineitems/:lineItemID PUT request  
+const body = {  
+  label: 'Activity 1 - New name' // Updating the name  scoreMaximum: 95 // Updating the maximum score}  
+const lineItemId = 'https://lms.example.com/course/1/lineitems/1'  
+const urlSafeLineItemId = encodeURIComponent(lineItemId)  
+const response = requests.put(`https://your.ltiaas.com/api/lineitems/${urlSafeLineItemId}`, body, { headers })
+```
+
+info
+
+The body you send will replace the information of the existing grade line. For this reason, similar to when creating a new grade line, the `label` and `scoreMaximum` fields are required.
+
+caution
+
+Fields present in the previous version of the grade line and missing from the new body will be deleted.
+
+A successful response will contain the updated line item object.
+
+```
+{  
+  "id": "https://lms.example.com/course/1/lineitems/1",  "scoreMaximum" : 95,  "label" : "Activity 1 - New name"}
+```
+
+## Deleting a grade line by its ID[​](#deleting-a-grade-line-by-its-id "Direct link to heading")
+
+To delete a grade line related to the context that originated an LTI® launch, you need to make a DELETE request to the `/api/lineitems/:lineItemID` endpoint of your LTIAAS' account subdomain.
+
+tip
+
+For a description of possible response statuses, check the [\[DELETE\] Line Item endpoint API Reference](/api/delete-api-lineitems-lineitemid).
+
+info
+
+Line item IDs are URLs, so their value needs to be URL encoded to be safely sent as a query parameter.
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/lineitems/:lineItemID DELETE request  
+const lineItemId = 'https://lms.example.com/course/1/lineitems/1'  
+const urlSafeLineItemId = encodeURIComponent(lineItemId)  
+requests.delete(`https://your.ltiaas.com/api/lineitems/${urlSafeLineItemId}`, { headers })
+```
+
+## Checking service availability[​](#checking-service-availability "Direct link to heading")
+
+The *Assignment and Grades* service might not be available for every LTI® launch context. Before attempting to manipulate grade lines you can [make a call to the ID Token endpoint](/guides/api/idtoken) and check the [services section](/guides/api/idtoken#assignmentandgrades) to know if the service is available.
+
+You can know if the service is available based on the value of the `idtoken.services.assignmentAndGrades.available` boolean field:
+
+```
+// Building Ltik based API authentication header  
+const authorizationHeader = `LTIK-AUTH-V2 ${API_KEY}:${LTIK}`  
+const headers = { Authorization: authorizationHeader }  
+// Making /api/idtoken GET request  
+const idtoken = requests.get('https://your.ltiaas.com/api/idtoken', { headers })  
+const isServiceAvailable = idtoken['services']['assignmentAndGrades']['available']  
+
+if (isServiceAvailable) {  
+  // Making /api/lineitems GET request  const response = requests.get(`https://your.ltiaas.com/api/lineitenms`, { headers })  const members = response['lineItems']}
+```
+
+**Tags:**
+
+-   [API](/tags/api)
+-   [Grades](/tags/grades)
+-   [Grade lines](/tags/grade-lines)
+-   [Tutorials](/tags/tutorials)
